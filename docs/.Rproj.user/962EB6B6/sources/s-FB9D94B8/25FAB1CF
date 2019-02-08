@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1549651112189.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "25FAB1CF",
+    "lastKnownWriteTime" : 1549651130,
+    "last_content_update" : 1549651166093,
+    "path" : "~/projects/presentations/docs/incremental.Rmd",
+    "project_path" : "incremental.Rmd",
+    "properties" : {
+        "cursorPosition" : "25,15",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
