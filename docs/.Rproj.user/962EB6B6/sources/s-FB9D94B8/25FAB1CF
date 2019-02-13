@@ -5,14 +5,14 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1495715146",
+    "hash" : "0",
     "id" : "25FAB1CF",
     "lastKnownWriteTime" : 1549661255,
     "last_content_update" : 1549661255250,
     "path" : "~/projects/presentations/docs/incremental.Rmd",
     "project_path" : "incremental.Rmd",
     "properties" : {
-        "cursorPosition" : "25,15",
+        "cursorPosition" : "30,0",
         "scrollLine" : "0"
     },
     "relative_order" : 2,

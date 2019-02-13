@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Git Introduction</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Adrian Zetner" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Git Introduction
+## Rusers Group
+### Adrian Zetner
+### 2019/02/08 (updated: 2019-02-13)
+
+---
+
+
+
+
+# What is Git?
+
+--
+
+- *Distributed* version control
+
+--
+
+- Ledger of work: 
+--
+snapshots
+
+--
+
+- Collaboration tool
+
+--
+
+- Workflow management software
+
+
+???
+
+- Git has been re-purposed by the data science community. In addition to using it for source code, we use it to manage the motley collection of files that make up typical data analytical projects, which often consist of data, figures, reports, and, yes, source code.
+
+- Git is a distributed version-control system - i.e. it records the changes made to files in a repository of code as a series of snapshots stored on many servers. 
+
+- Think of this like your standard cloud backup on steroids - not only are you able to restore your code in event of a crash, but you can also roll back your code to any of the snapshots if your code breaks. It is also easy for you to collaborate with others - again just like how you can work on the same Google Docs file with multiple people, multiple developers can simultaneously edit the same repository and record their individual changes.
+
+---
+
+# Why should you Care?
+
+--
+
+- No more emailing document revisions...
+--
+or final_FINALFORREAL.doc files
+
+--
+
+- Simpler local directory/file structures
+
+--
+
+- Remote storage
+
+--
+
+- Stable, reproducible workflows
+
+--
+
+- Easy add new collaborators to project
+
+--
+
+- The world's most boring time machine
+
+---
+name: big-point
+class: inverse, center, middle
+background-image: url(https://i.imgflip.com/2qqx5u.png)
+background-size: contain
+
+
+--
+
+# Gitlab
+
+---
+layout: false
+
+# What is Gitlab?
+
+--
+*gitlab.cscscience.ca*
+
+--
+
+- Git service provider
+
+--
+
+- Account management and access control
+
+--
+
+- Hosting platform
+
+--
+
+- Ticket tracker / project management tool
+
+???
+
+Issue tracking, collaboration, public access, pages.
+
+Git's source control can be fairly easy to screw up in the early days of learning to 'git gud' and gitlab provides a place to grab a fresh copy whenever you need it for any reason.
+
+---
+
+# What to store in Github?
+
+--
+- source code (any language)
+
+--
+
+- markdown / Jupyter / pdf
+
+--
+
+- small public (images &amp; data-sets)
+
+## What NOT to store?
+
+--
+
+- PASSWORDS, access tokens, or private keys
+
+--
+
+- PHI, large images, large data-sets
+
+--
+
+- compiled binaries
+
+--
+
+- Non-pars-able documents (Word, Photoshop, ...)
+
+---
+layout: big-point
+
+# Git vocabulary
+
+---
+layout: false
+# Git vocabulary
+
+
+
+
+---![git-places](files/git-places.png)
+---
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

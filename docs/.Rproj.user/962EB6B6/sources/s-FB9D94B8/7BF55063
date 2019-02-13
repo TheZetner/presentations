@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3753619652",
+    "hash" : "289411825",
     "id" : "7BF55063",
-    "lastKnownWriteTime" : 1549652723,
-    "last_content_update" : 1549652723854,
+    "lastKnownWriteTime" : 1550073700,
+    "last_content_update" : 1550073700297,
     "path" : "~/projects/presentations/docs/20190213_Rusers_git.rmd",
     "project_path" : "20190213_Rusers_git.rmd",
     "properties" : {
-        "cursorPosition" : "18,94",
-        "scrollLine" : "0"
+        "cursorPosition" : "159,0",
+        "scrollLine" : "94"
     },
     "relative_order" : 1,
     "source_on_save" : false,
