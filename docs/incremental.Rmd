@@ -1,5 +1,5 @@
 ---
-title: "Incremental Slides with xaringan / remark.js"
+ptitle: "Incremental Slides with xaringan / remark.js"
 author: "Yihui Xie"
 date: "2017/08/31"
 output:
