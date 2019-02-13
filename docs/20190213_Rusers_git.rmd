@@ -1,8 +1,8 @@
 ---
-title: "Presentation Ninja"
-subtitle: "⚔<br/>with xaringan"
-author: "Yihui Xie"
-date: "2016/12/12 (updated: `r Sys.Date()`)"
+title: "Git Introduction"
+subtitle: "Rusers Group"
+author: "Adrian Zetner"
+date: "2019/02/08 (updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -16,62 +16,122 @@ output:
 options(htmltools.dir.version = FALSE)
 ```
 
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+# What is Git?
+
+--
+
+- *Distributed* version control
+
+--
+
+- Ledger of work: 
+--
+snapshots
+
+--
+
+- Collaboration tool
+
+--
+
+- Workflow management software
+
 
 ???
 
-Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharingan_triple.svg)
+- Git is a distributed version-control system - i.e. it records the changes made to files in a repository of code as a series of snapshots stored on many servers. 
+
+- Think of this like your standard cloud backup on steroids - not only are you able to restore your code in event of a crash, but you can also roll back your code to any of the snapshots if your code breaks. It is also easy for you to collaborate with others - again just like how you can work on the same Google Docs file with multiple people, multiple developers can simultaneously edit the same repository and record their individual changes.
 
 ---
-class: center, middle
 
-# xaringan
+# Why should you Care?
 
-### /ʃaː.'riŋ.ɡan/
+--
+
+- No more emailing document revisions...
+--
+or final_FINALFORREAL.doc files
+
+--
+
+- Simpler local directory/file structures
+
+--
+
+- Remote storage
+
+--
+
+- Stable, reproducible workflows
+
+--
+
+- Easy add new collaborators to project
+
+--
+
+- The world's most boring time machine
 
 ---
+name: big-point
 class: inverse, center, middle
+background-image: url(https://i.imgflip.com/2qqx5u.png)
+background-size: contain
 
-# Get Started
-
----
-
-# Hello World
-
-Install the **xaringan** package from [Github](https://github.com/yihui/xaringan):
-
-```{r eval=FALSE, tidy=FALSE}
-devtools::install_github("yihui/xaringan")
-```
 
 --
 
-You are recommended to use the [RStudio IDE](https://www.rstudio.com/products/rstudio/), but you do not have to.
+# Gitlab
 
-- Create a new R Markdown document from the menu `File -> New File -> R Markdown -> From Template -> Ninja Presentation`;<sup>1</sup>
+
+
+---
+layout: false
+
+# What is Gitlab?
+
+--
+*gitlab.cscscience.ca*
 
 --
 
-- Click the `Knit` button to compile it;
+- Git service provider
 
 --
 
-- or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>2</sup> "Infinite Moon Reader" to live preview the slides (every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
+- Account management and access control
 
-.footnote[
-[1] 中文用户请看[这份教程](http://slides.yihui.name/xaringan/zh-CN.html)
+--
 
-[2] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio.
-]
+- Hosting platform
+
+--
+
+- Ticket tracker / project management tool
+
+--
+
+
+
 
 ---
-background-image: url(`r xaringan:::karl`)
-background-position: 50% 50%
-class: center, bottom, inverse
-
-# You only live once!
 
 ---
+## What to store in Github?
+- source code (any language)
+- markdown / Jupyter / pdf
+- small public (images & data-sets)
+
+## What NOT to store?
+- PASSWORDS, access tokens, or private keys
+- PHI, large images, large data-sets
+- compiled binaries
+- Non-pars-able documents (Word, Photoshop, ...)
+
+
+#### Old Instructions ###
+
 
 # Hello Ninja
 
