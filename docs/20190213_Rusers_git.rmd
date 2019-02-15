@@ -150,16 +150,163 @@ Git's source control can be fairly easy to screw up in the early days of learnin
 - Non-pars-able documents (Word, Photoshop, ...)
 
 ---
-layout: big-point
 
-# Git vocabulary
+# Git Vocabulary
+
+## Working files / directory
+--
+
+- Actively editing these
+
+--
+
+- A directory that git is aware of
+
 
 ---
-layout: false
-# Git vocabulary
 
+# Git Vocabulary
 
+## Commit
+--
 
+- Snapshot of your working files at a particular time
 
----![git-places](files/git-places.png)
+--
+
+- Creates revision history
+
 ---
+
+# Git Vocabulary
+
+## Staging area
+--
+
+- Files you've made changes to are saved and added to the staging area before being *committed* to the...
+
+--
+
+- AKA Index
+
+---
+
+# Git Vocabulary
+
+## Repository
+--
+
+- Where your commit history and files are store
+
+--
+
+- Can be local (only on your system) or remote (on gitlab or other service)
+
+---
+
+# Git Vocabulary
+
+## Add
+--
+
+- Add modified files to the staging area prior to commit
+
+---
+
+# Git Vocabulary
+
+## Push
+--
+
+- Send staged commits to a repository
+
+---
+
+# Git Vocabulary
+
+## Pull
+--
+
+- Send commits to a repository
+
+---
+
+# Git Vocabulary
+
+## Clone 
+--
+
+- Copy a repository to your local system
+
+---
+
+# Git Workflow
+
+## 
+--
+
+- Work: 
+--
+create, 
+--
+modify, 
+--
+or delete some files.
+
+--
+
+- Stage the changes with...
+--
+*git* **add**
+
+--
+
+- **Commit** often
+
+--
+
+- **Push**...
+
+---
+
+# The Layout of Git
+
+![git-places](files/git-places.png)
+
+---
+
+# Hands on pt. 1
+
+    - Create a new repository on Gitlab.cscscience.ca
+    - Add an SSH key to that repository
+      - Check if you have an SSH key on rstudio
+        - Git pane
+        - More > Shell
+        - ```ls ~/.ssh```
+      - If so, yay! If not:
+        - Open a bash terminal: locally or go to jupyter.cscscience.ca 
+        - Connect to the RStudio server: ```ssh rstudio```
+        - Create a ssh key: ```ssh-keygen -t rsa -C "YOUR-EMAIL@canada.ca"```
+        - Verify it: ```ls ~/.ssh```
+        - Print your public key and copy it: ```cat ~/.ssh/id_rsa.pub``` (ctrl+insert or shift+right click in jupyter)
+      - User icon > Settings > SSH Keys - Paste and save
+
+---
+
+# Hands on pt. 2
+
+    - Sign in at rstudio.cscscience.ca
+    - Create new project (include git repository) in RStudio
+    - Make a new R Markdown file and save it as README.md
+    - First commit
+    - Make changes
+    - Second commit
+    - Add remote origin via git shell:
+      - Git pane
+      - More > Shell
+      - git remote add origin git@gitlab.cscscience.ca:**USERNAME**/git-example.git
+      
+
+---
+
+# What Next?
