@@ -341,24 +341,38 @@ with validation.
 --
 
  * eg. Bowtie2 -X parameter:
+ 
+--
      * Max fragment length for valid paired-end alignments
+
+--
      * Default value: 500
-     * Typical Miseq read length is ~300 bases
+
+--
+     * Typical Miseq read length is ~300 bases 
 
 ???
 
 Genomics core 
-When your tool relies on scoring read alignments done by Bowtie2 this results in a ton of low scoring results
-withouth any way of knowing besides 
+When your tool relies on scoring read alignments done by Bowtie2 this results in a ton of low scoring results  
+without any way of knowing the results are wrong unless you have known positive samples showing up negative
 
 ---
+# Saving Decisions
 
- * 
- 
+* Appropriate defaults... with validation.
+
 --
 
 * Give them less
 
+--
+
+ * More options = more anxiety for making the right choices
+
+--
+
+ * Lower barrier for entry
 
 ???
 
@@ -373,17 +387,145 @@ withouth any way of knowing besides
 - Give them less:
     - More options = more anxiety for making the right choices
     - Create a low barrier to entry: less to originally learn prior to running the tool for the first time
-    - eg. Compare the arguments available to [Shovill vs Spades](http://www.bioinformaticszen.com/post/automating-selection-of-genome-assembly-software/)
-
-
-
----
-
 
 
 ---
+class: inverse, center, middle
+
+# Encouraging a Magical Culture
+
+---
+
+# Encouraging a Magical Culture
+
+--
+* Learn from the users
+
+???
+
+Remember this?
+
+---
+
+class: center, middle
+## Design Tool
+
+The magic of _**my tool**_ is that it grants you _**power**_ while saving you from _**???**_
+
+---
+# Encouraging a Magical Culture
 
 
+* Learn from the users
+
+--
+
+ * They are directly in tune with their pain
+ 
+--
+
+* Often users are amateur developers
+
+--
+
+  * Create workarounds
+
+---
+background-image: url(files/magic/galaxy-nightmare.png)
+background-size: contain
+
+???
+
+Eg. Mykrobe parser workflow - 300+ tool calls in Galaxy, mangled the cluster, down to one R script
+---
+
+# Encouraging a Magical Culture
+
+* Learn from the users
+
+ * They are directly in tune with their pain
+
+* Often users are amateur developers
+
+  * Create workarounds
+
+--
+
+* Great tools are often created by amateurs
+
+--
+
+ * R examples: *datapasta, ggplot, knitr*
+ 
+--
+
+ * The code may not be pretty but it does the job
+
+
+???
+
+- Learn from the users: they are directly in tune with user pain
+- Living pain of having an analysis or a need that isn't met by available software or struggling through the indescipherable tools that are available
+- These people can be amateur developers even though professional scientists and technicians
+    - Often find workarounds that fufill the requirement they have but that have real drawbacks due to the way they are made
+    - Eg. Mykrobe parser workflow - 300+ tool calls in Galaxy, down to one R script
+- Some R examples:
+    - Datapasta, ggplot, knitr were all created by students
+- Encourage users to create tools to solve the problems they are facing. 
+    - Then steal those ideas wholesale.
+
+
+---
+class: inverse, center, middle
+
+# A Couple More Slides from Karl Broman
+
+---
+### Warning messages
+- Make them:
+    - Clear
+    - Concise
+    - Informative
+    - Meaningful
+    - Suggest a next step
+
+---
+
+### Tests
+> "I don't need tests, I have users." - Karl Broman
+
+--
+
+> "If you use software that lacks automated tests, you are the tests." - Jenny Bryan
+
+---
+ 
+### Code inconsistencies
+- Consistent naming schemes for 
+    - functions
+    - arguments
+    - modules
+
+---
+
+### Documentation
+
+Tailored Tutorials > User Guide > Examples > Formal Documentation
+
+1. Users want to see your tool doing exactly what they want to do. 
+    - Plug in data and go.
+    - First importance should be showing how your users will actually use the tool
+2. General user guide second
+3. Examples to support the user guide for edge cases
+4. No one seems to read it unless something is going wrong
+
+---
+
+### User support
+
+No question is too insignificant
+
+---
 
 <!-- End of Presentation -->
 
