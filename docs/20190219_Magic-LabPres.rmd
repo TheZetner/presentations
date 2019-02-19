@@ -340,15 +340,16 @@ with validation.
 
 --
 
- * eg. Bowtie2 -X parameter: 
-  * Max fragment length for valid paired-end alignments
-  * Default value: 500
-  * 
+ * eg. Bowtie2 -X parameter:
+     * Max fragment length for valid paired-end alignments
+     * Default value: 500
+     * Typical Miseq read length is ~300 bases
 
 ???
 
 Genomics core 
 When your tool relies on scoring read alignments done by Bowtie2 this results in a ton of low scoring results
+withouth any way of knowing besides 
 
 ---
 
