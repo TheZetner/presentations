@@ -164,7 +164,7 @@ layout: true
 ]
 ---
 layout: false
-class: inverse, center, middle
+class: center, middle
 
 $$Magic =  \frac{Power}{Pain}$$
 ???
@@ -172,6 +172,219 @@ $$Magic =  \frac{Power}{Pain}$$
 So the more power something grants you relative to the pain of using it the more magical it feels
 
 ---
+class: inverse, center, middle
+## A Litmus Test
+
+The magic of 
+--
+_**tool**_ 
+--
+is that it grants you 
+--
+_**power**_ 
+--
+while saving you from 
+--
+_**pain**_
+
+
+???
+Who here knows about dplyr?
+
+---
+class: middle
+
+
+The magic of 
+--
+_**dplyr**_ 
+--
+is that it grants you 
+--
+_**a vocabulary to wrangle data**_ 
+--
+while saving you from 
+--
+_**mindless typing, reading documentation, and learning SQL**_
+
+---
+class: middle
+
+The magic of 
+--
+_**tinytex**_ 
+--
+is that it grants you 
+--
+_**the things you need to knit PDF**_ 
+--
+while saving you from 
+--
+_**a bloated 4GB install, arcane instructions, hunting through 90s websites**_
+--
+:[Yihui Xie's Hall of Pain](https://yihui.name/tinytex/pain/)
+
+---
+class: inverse, center, middle
+## Litmus Test
+
+The magic of _**tool**_ is that it grants you _**power**_ while saving you from _**pain**_
+
+---
+class: center, middle
+## Design Tool
+
+The magic of _**my tool**_ is that it grants you _**power**_ while saving you from _**???**_
+
+???
+
+* Cram as many pain points as you can into that '???' to increase the magical nature of your tool.  
+* Miles mentioned three specific pain points were mentioned that I'd like to run over here
+
+
+---
+# Saving Typing
+
+--
+* Specific to R but...
+
+---
+# Saving Typing
+
+* Pipeable functions
+
+--
+
+* Autocomplete friendly names
+
+--
+
+* Do it for the user
+
+???
+
+* No more repeated typing of variable names
+* Easier tab completion means faster typing
+* Use Rstudio Add-ins and Templates
+---
+
+# Saving Reading
+
+* Intuitive names
+
+--
+
+ * Less searching through documentation for desired functions or arguments
+
+--
+
+* Conform to conventions
+
+--
+
+ * Adhere to standard input and ouput formats where possible
+
+--
+
+* Be flexible
+
+--
+
+ * Rigid interfaces require more trial and error: 
+--
+more reading documentation, 
+--
+Stack Overflow, 
+--
+BioStars, 
+--
+etc...
+
+
+???
+
+* Users are going to want to compare the results to what they know
+* Minimizing the amount of reading a user has to do to start using a new tool will increase uptake
+
+---
+# Saving Decisions
+
+* Appropriate defaults... 
+
+--
+
+ * Many argue against defaults
+
+
+???
+
+* "users will blindly run the tool without changing defaults and the resulting answer will be incorrect"
+* We even say this ourselves
+
+---
+template: define
+
+> There is no such thing (yet) as an automated gearshift in short read mapping. It is all like stick-shift driving in San Francisco. In other words = running this tool with default parameters will probably not give you meaningful results. A way to deal with this is to understand the parameters by carefully reading the documentation and experimenting. Fortunately, Galaxy makes experimenting easy.
+
+---
+
+# Saving Decisions
+
+* Appropriate defaults...
+--
+with validation.
+
+--
+
+ * Why does your tool give answers that the user can't discern the validity of?
+
+--
+
+ * eg. Bowtie2 -X parameter: 
+  * Max fragment length for valid paired-end alignments
+  * Default value: 500
+  * 
+
+???
+
+Genomics core 
+When your tool relies on scoring read alignments done by Bowtie2 this results in a ton of low scoring results
+
+---
+
+ * 
+ 
+--
+
+* Give them less
+
+
+???
+
+* Argument against: Don't want a default here because users will blindly run the tool without changing defaults and the resulting answer will be incorrect
+        - eg. Read mapping with smalt: we specifically warn users:
+        > There is no such thing (yet) as an automated gearshift in short read mapping. It is all like stick-shift driving in San Francisco. In other words = running this tool with default parameters will probably not give you meaningful results. A way to deal with this is to understand the parameters by carefully reading the documentation and experimenting. Fortunately, Galaxy makes experimenting easy.
+        - eg. bowtie2: -X parameter (max insert size) defaults to 500, for our Illumina reads at 250+ bp per read this invalidates all the mapped read pairs resulting in incorrect scoring. 
+    - Validation is the answer to the above argument:
+        - Why does your tool give answers that the user can't discern the validity of?
+        - eg. with the bowtie2 -X parameter the only indication something was wrong comes from examining the pileups after the fact visually, or when a known positive sample scores as negative. A simple warning message that a vast majority of paired-end reads mapped as improperly paired would have solved this.
+- UIs and Dialogues: Galaxy / IRIDA
+- Give them less:
+    - More options = more anxiety for making the right choices
+    - Create a low barrier to entry: less to originally learn prior to running the tool for the first time
+    - eg. Compare the arguments available to [Shovill vs Spades](http://www.bioinformaticszen.com/post/automating-selection-of-genome-assembly-software/)
+
+
+
+---
+
+
+
+---
+
+
+
+<!-- End of Presentation -->
 
 
 
