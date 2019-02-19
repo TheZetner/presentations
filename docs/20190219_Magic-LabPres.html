@@ -53,6 +53,9 @@ background-image: url("files/magic/rs-title.png")
 
 ### tidyverse, production, teaching, distribution, programming, publication, etc...
 
+???
+
+90+ talks on many categories
 
 ---
 ## And of course...
@@ -64,6 +67,8 @@ background-size: contain
 
 ???
 
+Ancillary to consuming all this coffee I managed to see a number of interesting talks, of which I want to discuss one with you.
+
 Image credit: https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG
 
 ---
@@ -71,7 +76,6 @@ class: inverse, center, middle
 background-image: url(files/magic/warlock.jpg)
 background-size: fill
 
---
 # Magic
 --
 ?
@@ -90,7 +94,7 @@ Image Credit: http://kismetsthay.blogspot.com/2016/09/ranks-of-red-wizards.html
 
 --
 
-* Miles McBain: 
+* [Miles McBain](https://milesmcbain.xyz): 
 --
 
 creator of the package *datapasta*
@@ -120,10 +124,9 @@ class: inverse, center, middle
 
 ???
 
-datapasta makes use of RStudio add-ins to allow users to copy and paste tabular data from the web into R data structures with a minimum of user action. My own notes from the talk include a line 
+datapasta makes use of RStudio add-ins to allow users to copy and paste tabular data from the web into R data structures with a minimum of user action. My own notes from the talk include the exact quote "holy crap, use this!!!"
 
 ---
-name: define
 class: inverse, middle
 
 
@@ -135,20 +138,21 @@ class: inverse, middle
 Phenomena that violate the rules of our world
 
 ---
-template: define
+class: inverse, middle
 
 # Regular Magic
 &gt; Phenomena that *violate our assumptions* of the rules of the world
 
 ---
-template: define
+class: inverse, middle
 
 # Software Magic
 &gt; *Tools* that violate your assumptions of the rules of the *digital* world
 
 ???
 
-Grant you the power to do more than you thought you could
+Grant you the power to do more than you thought you could with your current abilities and knowledge  
+His talk started with showing some web scraping and analysis of tweets referencing magical R packages
 
 ---
 layout: true
@@ -159,10 +163,67 @@ layout: true
 .center[
 ![](files/magic/magic0.png)
 ]
+
+???
+
+Tweets with the hashtag rstats referencing magic/witchcraft/sorcery, showing the growing proportion of all rstats tweets
 ---
 .center[
 ![](files/magic/magic1.png)
 ]
+
+???
+
+Top 25 packages by counts of tweets as well as reference to magical abilities.
+Some of those are probably included by default *cough* looking at you Rmagic, but others such as purr and dplyr have earned the magical label
+
+---
+layout: false
+
+# Types of Magical Manifestations
+
+--
+
+* Zaps: 
+--
+
+    * Packages with one hero function 
+--
+    
+    * ```tinytex::install_tinytex()```
+--
+
+    * ```here::here()```
+--
+
+* Genies:
+--
+
+    * Direct interaction with other software
+--
+
+    * Mapedit
+--
+
+* Tongues
+--
+
+    * New language to more easily express and solve a problem
+--
+    
+    * Tidyverse
+
+
+???
+
+He went into details discussing the 3 major kinds of ways a package feels magical calling them zaps, genies, and tongues.
+
+* Hero functions (like here())
+
+* Interaction with leaflet maps and re-exporting that data into your R environment as useable R data structures
+
+* Magic arises from the intuitive way verbs in this new language accomplishes what you need.
+
 ---
 layout: false
 class: center, middle
@@ -170,12 +231,15 @@ class: center, middle
 `$$Magic =  \frac{Power}{Pain}$$`
 ???
 
-So the more power something grants you relative to the pain of using it the more magical it feels
+So the more power something grants you relative to the pain of using it the more magical it feels.
+
+We're hoping to create sorcerers naturally, not warlocks via Faustian contracts. 
 
 ---
 class: inverse, center, middle
 ## A Litmus Test
 
+--
 The magic of 
 --
 _**tool**_ 
@@ -190,7 +254,7 @@ _**pain**_
 
 
 ???
-Who here knows about dplyr?
+Who here knows about dplyr? The oft-called magical data wrangler and database interface.
 
 ---
 class: middle
@@ -207,6 +271,10 @@ _**a vocabulary to wrangle data**_
 while saving you from 
 --
 _**mindless typing, reading documentation, and learning SQL**_
+
+???
+
+What about Latex? Orin this case, the r package for installing it called tinytex
 
 ---
 class: middle
@@ -240,7 +308,7 @@ The magic of _**my tool**_ is that it grants you _**power**_ while saving you fr
 ???
 
 * Cram as many pain points as you can into that '???' to increase the magical nature of your tool.  
-* Miles mentioned three specific pain points were mentioned that I'd like to run over here
+* McBain mentioned three specific pain points I'd like to run over here
 
 
 ---
@@ -320,13 +388,18 @@ etc...
 ???
 
 * "users will blindly run the tool without changing defaults and the resulting answer will be incorrect"
-* We even say this ourselves
+* We even say this ourselves.
 
 ---
-template: define
+class: inverse, middle
 
 &gt; There is no such thing (yet) as an automated gearshift in short read mapping. It is all like stick-shift driving in San Francisco. In other words = running this tool with default parameters will probably not give you meaningful results. A way to deal with this is to understand the parameters by carefully reading the documentation and experimenting. Fortunately, Galaxy makes experimenting easy.
 
+???
+
+Does anyone recognize this disclaimer?
+
+Smalt
 ---
 
 # Saving Decisions
@@ -363,7 +436,6 @@ without any way of knowing the results are wrong unless you have known positive 
 
 * Appropriate defaults... with validation.
 
---
 
 * Give them less
 
@@ -408,10 +480,13 @@ Remember this?
 
 ---
 
-class: center, middle
-## Design Tool
+class: inverse, center, middle
+## Litmus Test
 
-The magic of _**my tool**_ is that it grants you _**power**_ while saving you from _**???**_
+The magic of _**tool**_ is that it grants you _**power**_ while saving you from _**pain**_
+
+???
+Living pain of having an analysis or a need that isn't met by available software or struggling through the indescipherable tools that are available
 
 ---
 # Encouraging a Magical Culture
@@ -430,6 +505,10 @@ The magic of _**my tool**_ is that it grants you _**power**_ while saving you fr
 --
 
   * Create workarounds
+
+
+???
+Living pain of having an analysis or a need that isn't met by available software or struggling through the indescipherable tools that are available
 
 ---
 background-image: url(files/magic/galaxy-nightmare.png)
@@ -498,6 +577,16 @@ class: inverse, center, middle
 
 Slides created with via the R package [**xaringan**](https://github.com/yihui/xaringan).
 
+???
+
+### Questions:
+- Difference between magic and API obfuscation? 
+    - Trust
+    - Compelling use case helps to bolster trust
+- Deep / Dark magic is often a perjorative in software development. How to expose the inner workings when the magic runs out?
+    - Speculative inclusion of options may be a waste a time: don't create intricate options for users to play with when they aren't in demand.
+    - Let your users guide you as they use and test the software. 
+    
 ---
 class: inverse, center, middle
 
@@ -552,7 +641,8 @@ No question is too insignificant
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
 "highlightLines": true,
-"countIncrementalSlides": false
+"countIncrementalSlides": false,
+"click": true
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
@@ -563,17 +653,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
   d.head.appendChild(s);
 })();</script>
-
-<script>
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
-</script>
 
 <script>
 (function() {
