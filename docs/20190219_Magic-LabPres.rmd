@@ -432,6 +432,33 @@ without any way of knowing the results are wrong unless you have known positive 
 ---
 # Saving Decisions
 
+* Appropriate defaults...with validation.
+
+* Why does your tool give answers that the user can't discern the validity of?
+
+--
+
+ * eg. BLAST -n parameter:
+ 
+--
+     * Max fragment length for valid paired-end alignments
+
+--
+     * Default value: 500
+
+--
+     * Typical Miseq read length is ~300 bases 
+
+???
+
+Genomics core 
+When your tool relies on scoring read alignments done by Bowtie2 this results in a ton of low scoring results  
+without any way of knowing the results are wrong unless you have known positive samples showing up negative
+
+---
+
+# Saving Decisions
+
 * Appropriate defaults... with validation.
 
 
