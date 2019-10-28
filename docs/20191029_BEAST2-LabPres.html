@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
-    <title>Bayesian Evolutionary Analysis by Sampling Trees</title>
+    <title>BEAST2</title>
     <meta charset="utf-8" />
     <meta name="author" content="Adrian Zetner" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
@@ -11,9 +11,10 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Bayesian Evolutionary Analysis by Sampling Trees
+# BEAST2
+## <strong>B</strong>ayesian <strong>E</strong>volutionary <strong>A</strong>nalysis by <strong>S</strong>ampling <strong>T</strong>rees
 ### Adrian Zetner
-### 2019/10/29 (updated: 2019-10-25)
+### 2019/10/29 (updated: 2019-10-28)
 
 ---
 
@@ -22,42 +23,59 @@ class: center, middle, inverse, title-slide
 
 layout: true
 class: inverse, center, middle
-background-image: url("files/beast/beastcanada.png")
-
-
-# RStudio::Conf 2019 - Austin TX
+background-image: url("files/beast/beastcanada-40alpha.png")
 
 ---
-## January 15 - 18, 2019
 
-## Sunny Austin, Texas
+# Taming the BEAST 2019
+
+## August 12 - 16, 2019
+
+## Squamish, British Columbia
 
 ---
-## January 15 - 18, 2019
 
-## ~~Sunny~~ Austin, Texas
+## Talks:
+
+Investigating the Dynamics of Diversification using Molecular Phylogenies  
+\- Matthew Pennell
+
+Bayesian Outbreak Reconstruction with Unsampled Cases and Tree Uncertainty - Caroline Colijn
+
+
+Introduction to Infectious Disease Phylodynamics 
+\- David Rasmussen  
+
+
+Evolutionary History of HBV in the Circumpolar Arctic  
+--
+  \- Carla Oslowy
+
+
+???
+
+Several invited lecturers presented on studies and techniques with BEAST2
 
 ---
 
 ## Training:
 
---
-### applied machine leaning, markdown, big data, shiny, etc...
+
+##### Relaxed Phylogenetics in BEAST 2  
+##### Priors with Flu A  
+##### Phylogeography in BEAST 2  
+##### Population Structure using the Multitype Birth-Death Model  
+##### Troubleshooting BEAST 2  
 
 ---
 
-## Talks:
---
-
-
-### tidyverse, production, teaching, distribution, programming, publication, etc...
+##### Many of these tutorials were guided versions of what are available [here](https://taming-the-beast.org/tutorials/)
 
 ???
 
-90+ talks on many categories
 
 ---
-## And of course...
+## And of course... As always...
 
 ---
 layout: false
@@ -66,24 +84,151 @@ background-size: contain
 
 ???
 
-Ancillary to consuming all this coffee I managed to see a number of interesting talks, of which I want to discuss one with you.
-
 Image credit: https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG
 
 ---
 class: inverse, center, middle
-background-image: url(files/magic/warlock.jpg)
-background-size: fill
 
-# Magic
+# BEAST2?
+
+???
+Great, so you did some tutorials and watched some talks. Why should we care? What is BEAST2?
+
+---
+
+# BEAST
+--
+
+### A cross-platform program for Bayesian analysis of molecular sequences using MCMC.
+???
+
+So beast, the noun can be defined as:
+
+1. any nonhuman animal, especially a large, four-footed mammal
+2. a contemptible person
+3. Capital T capital B: the Antichrist in Revelations
+4. something formidably difficult to control or deal with
+**click**
+5. A cross-platform program for Bayesian analysis of molecular sequences using MCMC.
+
+
+---
+
+# BEAST2
+
+--
+
+A modular, extensible, cross-platform package for performing Bayesian inference using MCMC with emphasis on phylogenetic analysis of molecular sequences
+
+--
+
+... something formidably difficult to control or deal with
+
+
+???
+
+Bayesian Evolutionary Analysis by Sampling Trees 2:  
+An independent project led by the University of Auckland that is a rewrite of the original BEAST. **click** 
+"A modular, extensible, cross-platform package for performing Bayesian inference using Markov Chain Monte Carlo with emphasis on phylogenetic analysis of molecular sequences"
+It estimates rooted, time-measured phylogenies using strict or relaxed molecular clock models and can be used as a method of reconstructing phylogenies but is also a framework for testing evolutionary hypotheses without conditioning on a single tree topology. 
+
+Let me preface this with, I am not an expert in the use of BEAST or the statistics that underpin it. A week long course isn't nearly enough to get to that point... That being said:
+
+---
+layout: true
+class: center, middle, inverse
+
+# Bayesian Inference in Brief
+
+---
+layout: false
+
+# Inference
+
+*Premise:* If A is true, then B is true.  
+
+--
+
+*Premise:* A is true.  
+
+--
+
+*Inference:* B is true.
+
+???
+
+Inference is the act of deriving logical conclusions from premises assumed to be true
+
+---
+# Inference
+
+
+*Premise:* All humans are mortal.  
+
+--
+
+*Premise:* Adrian is a human.  
+
+--
+
+*Inference:* Adrian is mortal.
+
+---
+# Statistical inference
+
+
+*Premise:* Squamish is a popular destination for rock climbers.  
+
+--
+
+*Premise:* Adrian is visiting Squamish.  
+
+--
+
+*Statistical Inference:* Adrian is a rock climber
 --
 ?
 
 ???
+Statistical inference generalises this to situations where the
+premises are not suﬃcient to draw conclusions without
+uncertainty.
 
-Image Credit: http://kismetsthay.blogspot.com/2016/09/ranks-of-red-wizards.html
+To perform statistical inference we need a theory of plausible
+reasoning.
 
 ---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+`\(P(model | data) = P(data | model)P(model)/P(data)\)`
+
+???
+
+Prior → P(model)
+• Original probability for the model parameters/components
+• Belief in our hypothesis
+• All parameters have priors, whether you specify them or not!
+Likelihood → P(data | model)
+• Probability of data given parameters (defined by model)
+Posterior → P(model | data)
+• Updated probability for the model parameters in light of the data
+Model evidence → P(data)
+• Probability for data given model (any combination of parameters)
+• Used for Bayesian model selection
+
+
+---
+
+
 
 # Software as Magic
 

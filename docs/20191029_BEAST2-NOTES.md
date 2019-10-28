@@ -32,3 +32,7 @@ https://github.com/laduplessis/Introduction-to-BEAST2
     - Markov process
     - JC69 (jukes-cantor)
     - HKY-85
+
+
+git remote add external git@github.com:TheZetner/presentations.git
+git push -u external master
