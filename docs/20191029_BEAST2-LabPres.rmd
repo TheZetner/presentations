@@ -116,7 +116,7 @@ So beast, the noun can be defined as:
 
 --
 
-A modular, extensible, cross-platform package for performing Bayesian inference using MCMC with emphasis on phylogenetic analysis of molecular sequences
+A *modular*, *extensible*, cross-platform package for performing Bayesian inference using MCMC with emphasis on phylogenetic analysis of molecular sequences
 
 --
 
@@ -130,13 +130,44 @@ An independent project led by the University of Auckland that is a rewrite of th
 "A modular, extensible, cross-platform package for performing Bayesian inference using Markov Chain Monte Carlo with emphasis on phylogenetic analysis of molecular sequences"
 It estimates rooted, time-measured phylogenies using strict or relaxed molecular clock models and can be used as a method of reconstructing phylogenies but is also a framework for testing evolutionary hypotheses without conditioning on a single tree topology. 
 
-Let me preface this with, I am not an expert in the use of BEAST or the statistics that underpin it. A week long course isn't nearly enough to get to that point... That being said:
+---
+# BEAST2
+
+What is it used for?  
+--
+
+* Estimate phylogenies from alignments  
+--
+
+* Estimate dates of MRCA  
+--
+
+* Estimate gene and species trees  
+--
+
+* Infer population histories  
+--
+
+* Epidemic reconstruction  
+--
+
+* Phylogeography  
+--
+
+* Simulation studies  
+--
+
+* and more!
 
 ---
 layout: true
 class: center, middle, inverse
 
 # Bayesian Inference in Brief
+
+???
+
+Let me preface this with, I am not an expert in the use of BEAST or the statistics that underpin it. A week long course isn't nearly enough to get to that point... That being said:
 
 ---
 layout: false
@@ -149,13 +180,21 @@ layout: false
 
 *Premise:* A is true.  
 
---
-
-*Inference:* B is true.
 
 ???
 
-Inference is the act of deriving logical conclusions from premises assumed to be true
+Inference is the act of deriving logical conclusions from premises known or assumed to be true
+
+---
+layout: false
+
+# Inference
+
+*Premise:* If A is true, then B is true.  
+
+*Premise:* A is true.  
+***
+*Inference:* B is true.
 
 ---
 # Inference
@@ -167,8 +206,14 @@ Inference is the act of deriving logical conclusions from premises assumed to be
 
 *Premise:* Adrian is a human.  
 
---
+---
+# Inference
 
+
+*Premise:* All humans are mortal.  
+
+*Premise:* Adrian is a human.  
+***
 *Inference:* Adrian is mortal.
 
 ---
@@ -181,627 +226,464 @@ Inference is the act of deriving logical conclusions from premises assumed to be
 
 *Premise:* Adrian is visiting Squamish.  
 
---
+???
+Statistical inference generalises this to situations where the
+premises are not su?ffcient to draw conclusions without
+uncertainty.
 
+---
+# Statistical inference
+
+
+*Premise:* Squamish is a popular destination for rock climbers.  
+
+*Premise:* Adrian is visiting Squamish.  
+***
 *Statistical Inference:* Adrian is a rock climber
 --
 ?
 
 ???
-Statistical inference generalises this to situations where the
-premises are not suﬃcient to draw conclusions without
-uncertainty.
 
 To perform statistical inference we need a theory of plausible
 reasoning.
 
 ---
+# Cox's Theorem 
+
+1. Divisibility and comparability
+
+???
+Cox suggested any theorem of plausible reasoning should satisfy the following conditions:
+
+1. Divisibility and comparability
+The plausibility of a proposition is a real number and is dependent on information we have related to the proposition.
+Logical propositions can only have values true or false
 
 ---
+# Cox's Theorem
+
+1. Divisibility and comparability
+2. Common sense
+
+???
+
+2. Common sense - All valid reasoning routes give the same result  
+"Common sense" includes consistency with Aristotelian logic in the sense that logically equivalent propositions shall have the same plausibility.
 
 ---
+# Cox's Theorem
+
+1. Divisibility and comparability
+2. Common sense
+3. Consistency
+
+???
+
+3. Consistency - If the plausibility of a proposition can be derived in many ways, all the results must be equal. Equivalent states of knowledge must have equivalent degrees of plausibility
+
+Cox's theorem has come to be used as one of the justifications for the use of Bayesian probability theory. Bayes' rule arises directly from the rules of probability. 
 
 ---
+class: inverse, center, middle
+
+# Bayes' Rule
+
+???
+Let's just skip the series of logical multiplication and summation from which we derive Bayes' Rule and discuss what it represents:
 
 ---
+class: center, middle
+
+$P(A|B) = P(B|A)P(A) / P(B)$
+
+???
+
+Bayes' rule or theorem provides us with a way to update our beliefs based on the arrival of new, relevant pieces of evidence. For example, if we were trying to provide the probability that a given person has cancer, we would initially just say it is whatever percent of the population has cancer. However, given additional evidence such as the fact that the person is a smoker, we can update our probability, since the probability of having cancer is higher given that the person is a smoker. This allows us to utilize prior knowledge to improve our probability estimations.
+
+In this formula, A is the event we want the probability of, and B is the new evidence that is related to A in some way.
 
 ---
+class: center, middle
+
+$P(A|B)$
+
+???
+
+P(A|B) is called the posterior; this is what we are trying to estimate. In the above example, this would be the “probability of having cancer given that the person is a smoker”.
+
+---
+class: center, middle
+
+$P(B|A)$
+
+???
+
+P(B|A) is called the likelihood; this is the probability of observing the new evidence, given our initial hypothesis. In the above example, this would be the “probability of being a smoker given that the person has cancer”.
+
+---
+class: center, middle
+
+$P(A)$
+
+???
+
+P(A) is called the prior; this is the probability of our hypothesis without any additional prior information. In the above example, this would be the “probability of having cancer”.
+
+---
+class: center, middle
+
+$P(B)$
+
+???
+
+P(B) is called the marginal likelihood; this is the total probability of observing the evidence. In the above example, this would be the “probability of being a smoker”. In many applications of Bayes Rule, this is ignored, as it mainly serves as normalization.
+
+---
+class: inverse, center, middle
+background-image: url("https://media.giphy.com/media/3oGRFlpAW4sIHA02NW/giphy.gif")
+
+???
+
+This brings us to a point where we must more exactly define probabilities. 
+
+Frequentists interpret probability as relative frequencies of outcomes of repeated, random (weakly controlled) "experiments"
+
+Take for example rolling a fair, 6-sided die:  
+• N: Total number of rolls.  
+• n5: Total number of 5’s rolled.  
+• P(d = 5) ≡ n5 /N as N → ∞
+
+There are several problems here:
+1. Experiments are assumed to be repeatable.
+2. Assumes that randomness is a property of the system.
+3. Completely ignores ∼ 400 years of physics.
+
+---
+# Bayesian Probability
+
+The Bayesian interpretation treats probability as a measure of the plausibility
+of propositions conditional on available information.
+
+A single proposition can therefore have multiple probabilities depending on
+the available information!
+
+---
+class: inverse, center, middle
+
+_It is impossible for a Die, with such determin'd force and direction, not to fall on such determin'd
+side, only I don't know the force and direction which makes it fall on such determin'd side, and
+therefore I call it Chance, which is nothing but the want of art…_ John Arbuthnot, 1692
+
+???
+
+It is impossible for a Die, with such determin'd force and direction, not to fall on such determin'd
+side, only I don't know the force and direction which makes it fall on such determin'd side, and
+therefore I call it Chance, which is nothing but the want of art… John Arbuthnot, 1692
+
+A measure of the plausibility of propositions conditional on available information.
+
+---
+class: inverse, center, middle
+
+$P(A|B) = P(B|A)P(A) / P(B)$
+
+???
+
+In the Bayesian interpretation, probability measures a “degree of belief.” 
+
+Bayes’ theorem then links the degree of belief in a discrete proposition (T/F) or a continuous proposition (probability density) before and after accounting for evidence. 
+
+---
+class: inverse, center, middle
 
 $P(model | data) = P(data | model)P(model)/P(data)$
 
 ???
+Putting this in terms of how BEAST2 uses bayes' theorem
+---
+class: inverse, center, middle
 
-Prior → P(model)
-• Original probability for the model parameters/components
-• Belief in our hypothesis
-• All parameters have priors, whether you specify them or not!
-Likelihood → P(data | model)
-• Probability of data given parameters (defined by model)
-Posterior → P(model | data)
-• Updated probability for the model parameters in light of the data
+$P(data)$
+
+???
+
 Model evidence → P(data)
 • Probability for data given model (any combination of parameters)
 • Used for Bayesian model selection
 
-
 ---
+class: inverse, center, middle
 
+$P(model)$
 
+???
 
-# Software as Magic
+Prior → P(model)  
+• Original probability for the model parameters/components  
+• Belief in our hypothesis  
+• All parameters have priors, whether you specify them or not!  
 
---
+For questions:
+A probability!
+• The probability of whatever you're interested in but in
+the absence of possibly relevant data.
+• In principle, any two (rational) people with access to the
+same information should specify exactly the same prior.
+• In practice this often isn't true.
 
-* [Our colour of magic: The open sourcery of fantastic R packages](https://github.com/MilesMcBain/rstudioconf_talk)
+Isn't the need for priors a problem with the Bayesian
+approach?
+•
+NO!
+• It is not possible to do inference without making
+assumptions.
+• Priors allow previous knowledge to be incorporated.
+• Frequentist (and Likelihoodist) methods also use priors:
+it's just not clear what they are!
 
---
-
-* [Miles McBain](https://milesmcbain.xyz): 
---
-
-creator of the package *datapasta*
-
---
-
-* R Users publicly called it by many names:
-
---
-
- * Witchcraft
-   
---
- * Dark Sorcery
-   
---
- * So f*cking magical
-
---
-
-* Why though?
+Which prior is best?
+• Only the person doing the analysis can answer this!  
+• Priors encapsulate expert knowledge (or its absence).  
+This is your opportunity to contribute your hard-won 
+expertise to the analysis
 
 ---
 class: inverse, center, middle
 
-![datapasta demo](files/magic/pasta.gif)
+$P(data | model)$
+
+???
+Likelihood → P(data | model)
+• Probability of data given parameters (defined by model)
+
+---
+class: inverse, center, middle
+
+$P(model | data)$
 
 ???
 
-datapasta makes use of RStudio add-ins to allow users to copy and paste tabular data from the web into R data structures with a minimum of user action. My own notes from the talk include the exact quote "holy crap, use this!!!"
+Posterior → P(model | data)  
+* Updated probability for the model parameters in light of the data  
+* Continuous variable and therefore a probability density function
 
 ---
-class: inverse, middle
+# Data
 
+* Samples drawn from stochastic process  
+--
 
-# Regular Magic
-> the power of apparently influencing the course of events by using mysterious or supernatural forces
+* Assumed to be correct
+--
+
+* Alignments of sequencing data  
+--
+
+* Sampled at one or many time points  
 
 ???
 
-Phenomena that violate the rules of our world
+Samples drawn from a realisation of some stochastic process
+Assume that the data are correct
+Typically one or more alignments of genetic sequencing data (DNA, RNA, amino acids, codons)
+Sampled at one or many time points
+May contain sampling location or phenotypic trait data
 
 ---
-class: inverse, middle
+# Model
 
-# Regular Magic
-> Phenomena that *violate our assumptions* of the rules of the world
+* Combines 4 separate models: 
+--
 
----
-class: inverse, middle
+  * Genealogy
+--
 
-# Software Magic
-> *Tools* that violate your assumptions of the rules of the *digital* world
+  * Demographic 
+--
 
-???
+  * Site
+--
 
-Grant you the power to do more than you thought you could with your current abilities and knowledge  
-His talk started with showing some web scraping and analysis of tweets referencing magical R packages
+  * Molecular 
 
 ---
 layout: true
-
-# Tweets Referencing Magical Software
-
----
-.center[
-![](files/magic/magic0.png)
-]
-
-???
-
-Tweets with the hashtag rstats referencing magic/witchcraft/sorcery, showing the growing proportion of all rstats tweets
----
-.center[
-![](files/magic/magic1.png)
-]
-
-???
-
-Top 25 packages by counts of tweets as well as reference to magical abilities.
-Some of those are probably included by default *cough* looking at you Rmagic, but others such as purr and dplyr have earned the magical label
-
----
-layout: false
-
-# Types of Magical Manifestations
-
---
-
-* Zaps: 
---
-
-    * Packages with one hero function 
---
-    
-    * ```tinytex::install_tinytex()```
---
-
-    * ```here::here()```
---
-
-* Genies:
---
-
-    * Direct interaction with other software
---
-
-    * Mapedit
---
-
-* Tongues
---
-
-    * New language to more easily express and solve a problem
---
-    
-    * Tidyverse
-
-
-???
-
-He went into details discussing the 3 major kinds of ways a package feels magical calling them zaps, genies, and tongues.
-
-* Hero functions (like here())
-
-* Interaction with leaflet maps and re-exporting that data into your R environment as useable R data structures
-
-* Magic arises from the intuitive way verbs in this new language accomplishes what you need.
-
----
-layout: false
 class: center, middle
-
-$$Magic =  \frac{Power}{Pain}$$
-???
-
-So the more power something grants you relative to the pain of using it the more magical it feels.
-
-We're hoping to create sorcerers naturally, not warlocks via Faustian contracts. 
-
----
-class: inverse, center, middle
-## A Litmus Test
-
---
-The magic of 
---
-_**tool**_ 
---
-is that it grants you 
---
-_**power**_ 
---
-while saving you from 
---
-_**pain**_
-
-
-???
-Who here knows about dplyr? The oft-called magical data wrangler and database interface.
-
----
-class: middle
-
-
-The magic of 
---
-_**dplyr**_ 
---
-is that it grants you 
---
-_**a vocabulary to wrangle data**_ 
---
-while saving you from 
---
-_**mindless typing, reading documentation, and learning SQL**_
-
-???
-
-What about Latex? Orin this case, the r package for installing it called tinytex
-
----
-class: middle
-
-The magic of 
---
-_**tinytex**_ 
---
-is that it grants you 
---
-_**the things you need to knit PDF**_ 
---
-while saving you from 
---
-_**a bloated 4GB install, arcane instructions, hunting through 90s websites**_
---
-:[Yihui Xie's Hall of Pain](https://yihui.name/tinytex/pain/)
-
----
-class: inverse, center, middle
-## Litmus Test
-
-The magic of _**tool**_ is that it grants you _**power**_ while saving you from _**pain**_
-
----
-class: center, middle
-## Design Tool
-
-The magic of _**my tool**_ is that it grants you _**power**_ while saving you from _**???**_
-
-???
-
-* Cram as many pain points as you can into that '???' to increase the magical nature of your tool.  
-* McBain mentioned three specific pain points I'd like to run over here
-
-
----
-# Saving Typing
-
---
-* Specific to R but...
-
----
-# Saving Typing
-
-* Pipeable functions
-
---
-
-* Autocomplete friendly names
-
---
-
-* Do it for the user
-
-???
-
-* No more repeated typing of variable names
-* Easier tab completion means faster typing
-* Use Rstudio Add-ins and Templates
 ---
 
-# Saving Reading
-
-* Intuitive names
-
---
-
- * Less searching through documentation for desired functions or arguments
-
---
-
-* Conform to conventions
-
---
-
- * Adhere to standard input and ouput formats where possible
-
---
-
-* Be flexible
-
---
-
- * Rigid interfaces require more trial and error: 
---
-more reading documentation, 
---
-Stack Overflow, 
---
-BioStars, 
---
-etc...
-
-
-???
-
-* Users are going to want to compare the results to what they know
-* Minimizing the amount of reading a user has to do to start using a new tool will increase uptake
-
----
-# Saving Decisions
-
-* Appropriate defaults... 
-
---
-
- * Many argue against defaults
-
-
-???
-
-* "users will blindly run the tool without changing defaults and the resulting answer will be incorrect"
-* We even say this ourselves.
-
----
-class: inverse, middle
-
-> There is no such thing (yet) as an automated gearshift in short read mapping. It is all like stick-shift driving in San Francisco. In other words = running this tool with default parameters will probably not give you meaningful results. A way to deal with this is to understand the parameters by carefully reading the documentation and experimenting. Fortunately, Galaxy makes experimenting easy.
-
-???
-
-Does anyone recognize this disclaimer?
-
-Smalt
----
-
-# Saving Decisions
-
-* Appropriate defaults...
---
-with validation.
-
---
-
- * Why does your tool give answers that the user can't discern the validity of?
-
---
-
- * eg. Bowtie2 -X parameter:
- 
---
-     * Max fragment length for valid paired-end alignments
-
---
-     * Default value: 500
-
---
-     * Typical Miseq read length is ~300 bases 
-
-???
-
-Genomics core 
-When your tool relies on scoring read alignments done by Bowtie2 this results in a ton of low scoring results  
-without any way of knowing the results are wrong unless you have known positive samples showing up negative
-
----
-# Saving Decisions
-
-* Appropriate defaults...with validation.
-
-* Why does your tool give answers that the user can't discern the validity of?
-
---
-
- * eg. BLAST -n parameter:
- 
---
-     * Max fragment length for valid paired-end alignments
-
---
-     * Default value: 500
-
---
-     * Typical Miseq read length is ~300 bases 
-
-???
-
-Genomics core 
-When your tool relies on scoring read alignments done by Bowtie2 this results in a ton of low scoring results  
-without any way of knowing the results are wrong unless you have known positive samples showing up negative
+# Genealogy Model
 
 ---
 
-# Saving Decisions
-
-* Appropriate defaults... with validation.
-
-
-* Give them less
-
---
-
- * More options = more anxiety for making the right choices
-
---
-
- * Lower barrier for entry
-
-???
-
-* Argument against: Don't want a default here because users will blindly run the tool without changing defaults and the resulting answer will be incorrect
-        - eg. Read mapping with smalt: we specifically warn users:
-        > There is no such thing (yet) as an automated gearshift in short read mapping. It is all like stick-shift driving in San Francisco. In other words = running this tool with default parameters will probably not give you meaningful results. A way to deal with this is to understand the parameters by carefully reading the documentation and experimenting. Fortunately, Galaxy makes experimenting easy.
-        - eg. bowtie2: -X parameter (max insert size) defaults to 500, for our Illumina reads at 250+ bp per read this invalidates all the mapped read pairs resulting in incorrect scoring. 
-    - Validation is the answer to the above argument:
-        - Why does your tool give answers that the user can't discern the validity of?
-        - eg. with the bowtie2 -X parameter the only indication something was wrong comes from examining the pileups after the fact visually, or when a known positive sample scores as negative. A simple warning message that a vast majority of paired-end reads mapped as improperly paired would have solved this.
-- UIs and Dialogues: Galaxy / IRIDA
-- Give them less:
-    - More options = more anxiety for making the right choices
-    - Create a low barrier to entry: less to originally learn prior to running the tool for the first time
-
+## Sampled Rooted Time-Tree 
 
 ---
-class: inverse, center, middle
-
-# Encouraging a Magical Culture
-
----
-
-# Encouraging a Magical Culture
-
---
-* Learn from the users
-
-???
-
-Remember this?
-
----
-
-class: inverse, center, middle
-## Litmus Test
-
-The magic of _**tool**_ is that it grants you _**power**_ while saving you from _**pain**_
-
-???
-Living pain of having an analysis or a need that isn't met by available software or struggling through the indescipherable tools that are available
-
----
-# Encouraging a Magical Culture
-
-
-* Learn from the users
-
---
-
- * They are directly in tune with their pain
- 
---
-
-* Often users are amateur developers
-
---
-
-  * Create workarounds
-
-
-???
-Living pain of having an analysis or a need that isn't met by available software or struggling through the indescipherable tools that are available
-
----
-background-image: url(files/magic/galaxy-nightmare.png)
+background-image: url(files/beast/fulltree.png)
 background-size: contain
 
 ???
 
-Eg. Mykrobe parser workflow - 300+ tool calls in Galaxy, mangled the cluster, down to one R script
+A sampled tree: reconstructed from samples drawn from study area. Have only sampled some of the available data.  
+Full tree unsampled tips are X's on the full tree. Sampled tree is missing those and is smaller for it.  
+
 ---
-
-# Encouraging a Magical Culture
-
-* Learn from the users
-
- * They are directly in tune with their pain
-
-* Often users are amateur developers
-
-  * Create workarounds
-
---
-
-* Great tools are often created by amateurs
-
---
-
- * R examples: *datapasta, ggplot, knitr*
- 
---
-
- * The code may not be pretty but it does the job
-
+background-image: url(files/beast/sampledtree.png)
+background-size: contain
 
 ???
 
-- Learn from the users: they are directly in tune with user pain
-- Living pain of having an analysis or a need that isn't met by available software or struggling through the indescipherable tools that are available
-- These people can be amateur developers even though professional scientists and technicians
-    - Often find workarounds that fufill the requirement they have but that have real drawbacks due to the way they are made
-    - Eg. Mykrobe parser workflow - 300+ tool calls in Galaxy, down to one R script
-- Some R examples:
-    - Datapasta, ggplot, knitr were all created by students
-- Encourage users to create tools to solve the problems they are facing. 
-    - Then steal those ideas wholesale.
+Sampled tree is missing those and is smaller for it.  
+
+---
+background-image: url(files/beast/timetrees.png)
+background-size: contain
+
+???
+
+Begins at the root, lengths are measured in calendar time and each tip is fixed at a certain sampling time.  
+Homochronous: All from one time point eg. outbreak, fossils, etc  
+Heterochronous: Different time points
 
 ---
 
+# Demographic Model
+
+???
+
+Describes population / speciation dynamics.  
+How does the population demographics / species diversity
+change over time?  
+Uses either a backwards looking structured coalescent model or a forwards looking birth-death model  
+
+Questions  
+Coalescent:  
+Given n sampling times and an estimate for estimated population over time Ne(t), out of all the ways we can connect the samples, what is the probability of the current tree?
+
+Birth-death:
+Given an estimate for the origin time, birth, death and sampling rates, if we simulate a tree forward-in-time from the origin to the time of the most recent sample, out of all the trees with n samples,
+what is the probability of the current tree?
+---
+
+# Site Model
+
+???
+
+Combines the Site and Substitution models 
+Substitution models describe rates of substitution between available characters relative to genetic distance (expected substitutions/site), as well as equilibrium frequencies of characters
+Site models describe how the substitution model varies from site-to-site
+
+---
+# Clock Model
+
+???
+
+Determines how quickly sequences are evolving along the tree which can vary between branches  
+Fixed using known sampling times  
+
+---
+class: center, middle
+
+P(G, D, S, C | sequences) = P(sequences | G, D, S, C)P(G, D, S, C)/P(sequences)
+
+???
+
+So what this gives us, if we could fill out the RHS fully is the posterior distribution of probabilities for each variation of those models (genealogy, demographic, site, clock) leading to the resultant sequence alignment.    
+
+
+---
+class: center, middle
+
+$P(sequences)$
+
+???
+
+Trouble is, we can't easily calculate the marginal likelihood or model evidence of a given set of sequences: for the complicated models that describe sequence evolution the parameter space is enormous 
+
+---
+class: inverse, center, middle
+
+# The Solution: Markov-Chain Monte Carlo  
+
+???
+
+MCMC is a stochastic algorithm that performs a random walk on the posterior, preferentially sampling high-density areas
+
+---
+background-image: url(files/beast/mcmcbot.png)
+background-size: contain
+
+???
+What that means:  
+Choose a position on the posterior (ie. random variation of model parameters)
+Randomly walk across this multi-dimensional probability landscape in a step-wise fashion
+Preferentially move towards higher probability combinations of model parameters: ie. ones more likely to explain the sequence alignment given the models
+
+---
+background-image: url(files/beast/probabilitylandscape.jpg)
+background-size: contain
+
+???
+
+Report parameter values of every Nth step.
+After many many repetitions, points will be sampled in proportion to the height of the probability landscape.
+
+---
+
+# Many
+
+---
+
+# Many, Many 
+
+---
+
+# Many, Many, Repetitions
+
+???
+Decide on the length of the chain (total number of steps to take): Millions of steps
+Decide on the sampling frequency (how often to record samples so that they are uncorrelated): Every 5-10k or so
+---
+background-image: url(files/beast/sticky.png)
+background-size: contain
+
+???
+After run discard first 10% or so, the so called "burn in"  
+Assess convergence and mixing: did it converge to a stable maximum? Was there jumping between?
+
+---
+background-image: url(files/beast/caterpillar.png)
+background-size: contain
+
+???
+A successful run should look like white noise.
+
+---
+background-image: url(files/beast/figtree.png)
+background-size: contain
+
+???
+Afterwards use the TreeAnnotator companion software from BEAST2 in order to take the reesults of that MCMC walk across the probabilistic landscape and convert them into a tree file which can be visualized in figtree or whatever software you prefer
+
+---
 layout: false
-class: inverse, center, middle
+# Tools of the trade
 
-$$Magic =  \frac{Power}{Pain}$$
-
-???
-
-So the more power something grants you relative to the pain of using it the more magical it feels
-
----
-class: inverse, center, middle
-
-The magic of _**my tool**_ is that it grants you _**power**_ while saving you from _**???**_
-
----
-class: inverse, center, middle
-
-# Thanks!
-
-Slides created with via the R package [**xaringan**](https://github.com/yihui/xaringan).
-
-???
-
-### Questions:
-- Difference between magic and API obfuscation? 
-    - Trust
-    - Compelling use case helps to bolster trust
-- Deep / Dark magic is often a perjorative in software development. How to expose the inner workings when the magic runs out?
-    - Speculative inclusion of options may be a waste a time: don't create intricate options for users to play with when they aren't in demand.
-    - Let your users guide you as they use and test the software. 
-    
----
-class: inverse, center, middle
-
-# A Couple More Slides from Karl Broman
-
----
-### Warning messages
-- Make them:
-    - Clear
-    - Concise
-    - Informative
-    - Meaningful
-    - Suggest a next step
-
----
-
-### Tests
-> "I don't need tests, I have users." - Karl Broman
-
+* BEAST2: Software implementing MCMC for model parameter and tree inference
 --
 
-> "If you use software that lacks automated tests, you are the tests." - Jenny Bryan
+* BEAUti2: Part of BEAST2 package for setting up the input file (.xml)
+--
+
+* Tracer: Analysis of BEAST output files (.log)
+--
+
+* TreeAnnotator: Analysis of BEAST output files (.trees)
+--
+
+* FigTree, IcyTree, ggtree: Visualisation of trees (.trees)
 
 ---
- 
-### Code inconsistencies
-- Consistent naming schemes for 
-    - functions
-    - arguments
-    - modules
+class: inverse, center, middle
 
----
-
-### Documentation
-
-Tailored Tutorials > User Guide > Examples > Formal Documentation
-
-1. Users want to see your tool doing exactly what they want to do. 
-    - Plug in data and go.
-    - First importance should be showing how your users will actually use the tool
-2. General user guide second
-3. Examples to support the user guide for edge cases
-4. No one seems to read it unless something is going wrong
-
----
-
-### User support
-
-No question is too insignificant
+... something formidably difficult to control or deal with
