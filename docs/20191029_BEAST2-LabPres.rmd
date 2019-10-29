@@ -6,6 +6,7 @@ date: "2019/10/29 (updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
+    css: xaringan-themer.css
     nature:
       highlightStyle: github
       highlightLines: true
@@ -19,6 +20,13 @@ output:
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 ```
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+solarized_light()
+
+```
+
+
 layout: true
 class: inverse, center, middle
 background-image: url("files/beast/beastcanada-40alpha.png")
@@ -95,9 +103,7 @@ Great, so you did some tutorials and watched some talks. Why should we care? Wha
 ---
 
 # BEAST
---
 
-### A cross-platform program for Bayesian analysis of molecular sequences using MCMC.
 ???
 
 So beast, the noun can be defined as:
@@ -107,9 +113,16 @@ So beast, the noun can be defined as:
 3. Capital T capital B: the Antichrist in Revelations
 4. something formidably difficult to control or deal with
 **click**
-5. A cross-platform program for Bayesian analysis of molecular sequences using MCMC.
 
+---
 
+# BEAST
+
+### A cross-platform program for Bayesian analysis of molecular sequences using MCMC.
+
+???
+
+5. A cross-platform program for Bayesian analysis of molecular sequences using Markov Chain Monte Carlo.
 ---
 
 # BEAST2
@@ -244,6 +257,7 @@ uncertainty.
 ?
 
 ???
+Question mark? Uncertainty remains.
 
 To perform statistical inference we need a theory of plausible
 reasoning.
@@ -337,7 +351,7 @@ $P(B)$
 
 ???
 
-P(B) is called the marginal likelihood; this is the total probability of observing the evidence. In the above example, this would be the “probability of being a smoker”. In many applications of Bayes Rule, this is ignored, as it mainly serves as normalization.
+P(B) is called the marginal likelihood; this is the total probability of observing the evidence. In the above example, this would be the “probability of being a smoker”. 
 
 ---
 class: inverse, center, middle
@@ -345,7 +359,7 @@ background-image: url("https://media.giphy.com/media/3oGRFlpAW4sIHA02NW/giphy.gi
 
 ???
 
-This brings us to a point where we must more exactly define probabilities. 
+This brings us to a point where we must more exactly define probabilities for our purposes. 
 
 Frequentists interpret probability as relative frequencies of outcomes of repeated, random (weakly controlled) "experiments"
 
@@ -361,6 +375,13 @@ There are several problems here:
 
 ---
 # Bayesian Probability
+
+* Treats probability as a measure of the plausibility
+--
+
+* Conditional on available information
+
+???
 
 The Bayesian interpretation treats probability as a measure of the plausibility
 of propositions conditional on available information.
@@ -616,7 +637,7 @@ background-size: contain
 ???
 What that means:  
 Choose a position on the posterior (ie. random variation of model parameters)
-Randomly walk across this multi-dimensional probability landscape in a step-wise fashion
+Randomly walk across this multi-dimensional probability landscape in a step-wise fashion: a markov chain
 Preferentially move towards higher probability combinations of model parameters: ie. ones more likely to explain the sequence alignment given the models
 
 ---
@@ -669,10 +690,10 @@ Afterwards use the TreeAnnotator companion software from BEAST2 in order to take
 layout: false
 # Tools of the trade
 
-* BEAST2: Software implementing MCMC for model parameter and tree inference
+* BEAUti2: Part of BEAST2 package for setting up the input file (.xml)
 --
 
-* BEAUti2: Part of BEAST2 package for setting up the input file (.xml)
+* BEAST2: Software implementing MCMC for model parameter and tree inference
 --
 
 * Tracer: Analysis of BEAST output files (.log)
