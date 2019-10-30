@@ -3,6 +3,8 @@ title: "BEAST2"
 subtitle: "**B**ayesian **E**volutionary **A**nalysis by **S**ampling **T**rees"
 author: "Adrian Zetner"
 date: "2019/10/29 (updated: `r Sys.Date()`)"
+header-includes:
+   - \usepackage{color}
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -12,6 +14,7 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       click: true
+    extra-dependencies: {color}
 
 
 ---
@@ -309,7 +312,7 @@ Let's just skip the series of logical multiplication and summation from which we
 ---
 class: center, middle
 
-$P(A|B) = P(B|A)P(A) / P(B)$
+$$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$
 
 ???
 
@@ -320,7 +323,7 @@ In this formula, A is the event we want the probability of, and B is the new evi
 ---
 class: center, middle
 
-$P(A|B)$
+$$\textbf{P(A|B)} = \frac{P(B|A)P(A)}{P(B)}$$
 
 ???
 
@@ -329,7 +332,7 @@ P(A|B) is called the posterior; this is what we are trying to estimate. In the a
 ---
 class: center, middle
 
-$P(B|A)$
+$$P(A|B) = \frac{\textbf{P(B|A)}P(A)}{P(B)}$$
 
 ???
 
@@ -337,8 +340,7 @@ P(B|A) is called the likelihood; this is the probability of observing the new ev
 
 ---
 class: center, middle
-
-$P(A)$
+$$P(A|B) = \frac{P(B|A)\textbf{P(A)}}{P(B)}$$
 
 ???
 
@@ -346,8 +348,7 @@ P(A) is called the prior; this is the probability of our hypothesis without any 
 
 ---
 class: center, middle
-
-$P(B)$
+$$P(A|B) = \frac{P(B|A)P(A)}{\textbf{P(B)}}$$
 
 ???
 
@@ -407,7 +408,7 @@ A measure of the plausibility of propositions conditional on available informati
 ---
 class: inverse, center, middle
 
-$P(A|B) = P(B|A)P(A) / P(B)$
+$$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$
 
 ???
 
@@ -418,14 +419,13 @@ Bayes’ theorem then links the degree of belief in a discrete proposition (T/F)
 ---
 class: inverse, center, middle
 
-$P(model | data) = P(data | model)P(model)/P(data)$
+$$P(model | data) = \frac{P(data | model)P(model)}{P(data)}$$
 
 ???
 Putting this in terms of how BEAST2 uses bayes' theorem
 ---
 class: inverse, center, middle
-
-$P(data)$
+$$P(model | data) = \frac{P(data | model)P(model)}{\textbf{P(data)}}$$
 
 ???
 
@@ -436,7 +436,7 @@ Model evidence → P(data)
 ---
 class: inverse, center, middle
 
-$P(model)$
+$$P(model | data) = \frac{P(data | model)\textbf{P(model)}}{P(data)}$$
 
 ???
 
@@ -472,7 +472,7 @@ expertise to the analysis
 ---
 class: inverse, center, middle
 
-$P(data | model)$
+$$P(model | data) = \frac{\textbf{P(data | model)}P(model)}{P(data)}$$
 
 ???
 Likelihood → P(data | model)
@@ -481,8 +481,7 @@ Likelihood → P(data | model)
 ---
 class: inverse, center, middle
 
-$P(model | data)$
-
+$$\textbf{P(model | data)} = \frac{P(data | model)P(model)}{P(data)}$$
 ???
 
 Posterior → P(model | data)  
