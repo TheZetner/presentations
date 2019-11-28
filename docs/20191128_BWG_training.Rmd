@@ -189,6 +189,62 @@ This survey will also act as a pre-registration form to determine priority acces
 
 ---
 
+class: inverse, center, top
+background-image: url("files/bwg-nov/Education.png")
+background-size: 400px
+
+<!-- background-position: 50% 50% -->
+
+???
+
+Results so far: Have you taken an R course?
+
+<!--
+Results so far: Have you taken an R course?
+-->
+
+
+---
+
+
+class: inverse, center, top
+background-image: url("files/bwg-nov/Experience.png")
+background-size: 400px
+
+<!-- background-position: 50% 50% -->
+
+
+
+???
+
+Results so far: Experience in R?
+
+<!--
+Results so far: Experience in R?
+-->
+
+
+---
+
+class: inverse, center, top
+background-image: url("files/bwg-nov/Interest.png")
+background-size: 400px
+
+<!-- background-position: 50% 50% -->
+
+
+
+???
+
+Results so far: Course Interest?
+
+<!--
+Results so far: Course Interest?
+-->
+
+
+---
+
 class: inverse, center, middle
 
 # IRIDA Uploader Update
