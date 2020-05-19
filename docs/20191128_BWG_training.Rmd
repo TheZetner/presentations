@@ -1,0 +1,354 @@
+---
+title: "Training"
+subtitle: "Updated and Upcoming"  
+author: "Adrian Zetner"
+date: '`r Sys.Date()`'
+header-includes:
+   - \usepackage{color}
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      click: true
+    extra-dependencies: {color}
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+solarized_light(
+  code_font_family = "Fira Code",
+  code_font_url    = "https://cdn.rawgit.com/tonsky/FiraCode/1.204/distr/fira_code.css"
+)
+```
+
+class: inverse, center, middle
+
+# Recently Added and Updated Courses
+
+???
+
+<!--
+Recently Added and Updated Courses
+-->
+
+---
+# Recently Added and Updated Courses
+
+* Introduction to Jupyter Notebooks  
+
+
+???
+
+Introduction to Jupyter Notebooks was originally presented as a seminar last summer, followed by an NML Winnipeg workshop that has now been developed into a MOODLE course
+
+<!--
+Introduction to Jupyter Notebooks was originally presented as a seminar last summer, followed by an NML Winnipeg workshop that has now been developed into a MOODLE course
+-->
+
+
+---
+# Recently Added and Updated Courses
+
+* Introduction to Jupyter Notebooks  
+* Conda and Cluster Etiquette  
+
+???
+
+Conda and Cluster Etiquette was presented as an NML Winnipeg workshop that has now been developed into a MOODLE course. 
+It covers use of our high performance computing cluster as well as Conda software to containerize analyses.
+
+<!--
+Conda and Cluster Etiquette was presented as an NML Winnipeg workshop that has now been developed into a MOODLE course. 
+It covers use of our high performance computing cluster as well as Conda software to containerize analyses.
+-->
+
+---
+
+
+# Recently Added and Updated Courses
+
+* Introduction to Jupyter Notebooks  
+* Conda and Cluster Etiquette  
+* Introduction to IRIDA 2019 
+
+???
+
+The Introduction to IRIDA course has been updated with a new format that we prototyped with our advanced Galaxy tutorials. 
+The new format, instead of all videos, consists of a video introduction followed by hands on tutorials delving into all things IRIDA.
+
+
+<!--
+The Introduction to IRIDA course has been updated with a new format that we prototyped with our advanced Galaxy tutorials. 
+The new format, instead of all videos, consists of a video introduction followed by hands on tutorials delving into all things IRIDA.
+-->
+
+---
+class: inverse, center, middle
+
+# Upcoming Courses
+
+???
+
+<!--
+Courses to look for in the new year
+-->
+
+---
+background-image: url("https://benjjneb.github.io/dada2/images/DADA2_Logo_Text_1_14_640px.png")
+background-size: 400px
+background-position: 50% 50%
+
+# Upcoming Courses
+
+* ASV Analysis with DADA2
+--
+ \- beta testers needed!
+
+???
+
+The DADA2 tutorial is a walk-through of the key steps required for ASV inference from fastq data. 
+We're currently looking for beta testers with domain knowledge to run through the tutorial and provide feedback. 
+If that interests you, please come talk to me afterwards or email adrian.zetner@canada.ca. 
+
+<!--
+The DADA2 tutorial is a walk-through of the key steps required for ASV inference from fastq data. 
+We're currently looking for beta testers with domain knowledge to run through the tutorial and provide feedback. 
+If that interests you, please come talk to me afterwards or email adrian.zetner@canada.ca. 
+-->
+
+---
+# Upcoming Courses
+
+* ASV Analysis with DADA2
+* Read Alignment
+
+???
+
+Hands on tutorials comparing and contrasting various read alignment softwares
+
+<!--
+Hands on tutorials comparing and contrasting various read alignment softwares
+-->
+---
+# Upcoming Courses
+
+* ASV Analysis with DADA2
+* Read Alignment
+* Introduction to Base R Concepts
+
+???
+
+Originally taught in 2017 and updated in 2018 Introduction to Base R Concepts was a two day workshop that covers many subjects from the history of R and basic functions to tidyverse-based manipulation and graphics
+The slides and data will soon be available on MOODLE for self guided learning opportunities in advance of the next workshop in January 2020
+
+<!--
+Originally taught in 2017 and updated in 2018 Introduction to Base R Concepts was a two day workshop that covers many subjects from the history of R and basic functions to tidyverse-based manipulation and graphics.
+The slides and data will soon be available on MOODLE for self guided learning opportunities in advance of the next workshop in January 2020
+-->
+
+---
+class: inverse, center, middle
+
+# R Workshop January 2020
+
+???
+
+<!--
+Speaking of January 2020...
+-->
+
+---
+
+class: inverse, center, top
+background-image: url("files/bwg-nov/qr-survey.svg")
+background-size: 400px
+
+<!-- background-position: 50% 50% -->
+
+# R Workshop: https://bit.ly/2OprAau
+
+???
+
+Follow this QR code for a google forms survey to determine interest for what kind of workshop to teach. 
+This survey will also act as a pre-registration form to determine priority access to seats.
+
+<!--
+Follow this QR code for a google forms survey to determine interest for what kind of workshop to teach. 
+This survey will also act as a pre-registration form to determine priority access to seats.
+-->
+
+
+---
+
+class: inverse, center, top
+background-image: url("files/bwg-nov/Education.png")
+background-size: 400px
+
+<!-- background-position: 50% 50% -->
+
+???
+
+Results so far: Have you taken an R course?
+
+<!--
+Results so far: Have you taken an R course?
+-->
+
+
+---
+
+
+class: inverse, center, top
+background-image: url("files/bwg-nov/Experience.png")
+background-size: 400px
+
+<!-- background-position: 50% 50% -->
+
+
+
+???
+
+Results so far: Experience in R?
+
+<!--
+Results so far: Experience in R?
+-->
+
+
+---
+
+class: inverse, center, top
+background-image: url("files/bwg-nov/Interest.png")
+background-size: 400px
+
+<!-- background-position: 50% 50% -->
+
+
+
+???
+
+Results so far: Course Interest?
+
+<!--
+Results so far: Course Interest?
+-->
+
+
+---
+
+class: inverse, center, middle
+
+# IRIDA Uploader Update
+
+???
+
+<!--
+IRIDA Uploader update has been completed and Jeff Thiessen is doing Training soon
+-->
+
+---
+# IRIDA Uploader Training
+
+* New uploader tool is more stable, user friendly, and functional
+
+--
+
+* Supports: MiSeq, MiniSeq, NextSeq, iSeq, and general file upload (Minion)
+
+--
+
+* Old uploader will cease to be supported in January 2020
+
+--
+
+* Training 0900h - 1000h on Dec 11th in E1035
+
+--
+
+* Every group using the uploader must send a representative for training
+
+
+???
+
+
+<!--
+New uploader tool is more stable, user friendly, and functional
+It now supports: MiSeq, MiniSeq, NextSeq, iSeq, and general file upload for minion
+Old uploader will cease to be supported in January 2020
+Training 9-11am on Dec 11th in E1035
+Every group using the uploader must send a representative for training
+-->
+
+---
+class: inverse, center, top
+background-image: url("files/bwg-nov/uploaderreg-qr-code.png")
+background-size: 400px
+
+# Uploader Training: https://bit.ly/2OprAau
+
+???
+
+QR code for the IRIDA Uploader as well as a short Forms URL. I'll leave that up for a minute. Any questions?
+<!--
+QR code for the IRIDA uploader training as well as a short Forms URL. I'll leave that up for a minute.
+-->
+
+---
+
+class: inverse, center, middle
+
+# Data Therapy
+## Nov 28th, 1430-1600 E1035
+
+???
+
+We are having our second data therapy session this afternoon between 1430 and 1600 in E1035.
+Come to work on your bioinformatics and data science projects with experts available to answer your questions and help you work.
+I'll be there and will be available to help with R scripting as well.
+
+<!--
+We are having our second data therapy session this afternoon between 1430 and 1600 in E1035.
+Come to work on your bioinformatics and data science projects with experts available to answer your questions and help you work.
+I'll be there and will be available to help with R scripting as well.
+-->
+
+---
+class: inverse, center, top
+background-image: url("files/bwg-nov/qr-survey.svg")
+<!-- background-position: 50% 50% -->
+<!-- background-size: 400px -->
+
+# R Workshop: https://bit.ly/2KX0ogT
+
+???
+
+Here again is that QR code as well as a short Forms URL. I'll leave that up for a minute. Any questions?
+
+<!--
+Here again is that QR code as well as a short Forms URL. I'll leave that up for a minute.
+-->
+
+---
+
+class: inverse, center, top
+background-image: url("files/bwg-nov/uploaderreg-qr-code.png")
+background-size: 400px
+
+
+# Uploader Training: https://bit.ly/2OprAau
+
+???
+
+Here again is that QR code for the IRIDA Uploader as well as a short Forms URL. I'll leave that up for a minute. Any questions?
+<!--
+Here again is that QR code for the IRIDA uploader training as well as a short Forms URL. I'll leave that up for a minute.
+-->

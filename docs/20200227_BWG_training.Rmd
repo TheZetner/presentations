@@ -1,0 +1,182 @@
+---
+title: "Training"
+subtitle: "Updated and Upcoming"  
+author: "Adrian Zetner"
+date: '`r Sys.Date()`'
+header-includes:
+   - \usepackage{color}
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      click: true
+    extra-dependencies: {color}
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+solarized_light(
+  code_font_family = "Fira Code",
+  code_font_url    = "https://cdn.rawgit.com/tonsky/FiraCode/1.204/distr/fira_code.css"
+)
+```
+
+class: inverse, center, middle
+
+# Training Updates
+
+???
+
+<!--
+Training Updates
+-->
+
+---
+# Recently Added
+
+* Introduction to R with Tidyverse  
+
+
+???
+
+Originally presented on January 31st, 2020 as a 6 hour course but has now been added to MOODLE for all those who missed it or want to revisit content. 
+
+
+<!--
+Originally presented on January 31st, 2020 as a 6 hour course but has now been added to MOODLE for all those who missed it or want to revisit content. 
+-->
+
+
+---
+
+class: inverse, center, top
+background-image: url("files/bwg-feb/explanationquality.png")
+background-size: 400px
+
+<!-- background-position: 50% 50% -->
+
+???
+
+Well received course, highly rated for quality of explanations etc
+
+<!--
+Results so far: Have you taken an R course?
+-->
+
+
+---
+
+
+class: inverse, center, top
+background-image: url("files/bwg-feb/contentcovered.png")
+background-size: 400px
+
+<!-- background-position: 50% 50% -->
+
+
+
+???
+
+Content covered for time
+
+<!--
+Results so far: Experience in R?
+-->
+
+
+---
+
+class: inverse, center, top
+background-image: url("files/bwg-feb/contentstart.png")
+background-size: 400px
+
+<!-- background-position: 50% 50% -->
+
+
+
+???
+
+Knowledge of subject before course
+
+<!--
+Results so far: Course Interest?
+-->
+---
+
+class: inverse, center, top
+background-image: url("files/bwg-feb/contentcompletion.png")
+background-size: 400px
+
+<!-- background-position: 50% 50% -->
+
+
+
+???
+
+Knowledge of subject after course
+
+<!--
+Results so far: Course Interest?
+-->
+
+---
+class: inverse, center, middle
+
+# R Workshop March 2020
+## Advanced Data Transformation
+
+???
+
+Everyone who answered the survey got first crack at signing up for the next workshop which will cover advanced manipulation of rectangular data along with some visualization and modelling as this was the most requested topic
+
+<!--
+Speaking of March 2020...
+-->
+
+---
+
+class: inverse, center, middle
+
+<!-- 
+background-position: 50% 50% 
+background-image: url("files/bwg-nov/qr-survey.svg")
+background-size: 400px
+-->
+
+# R Workshop: https://tinyurl.com/BFXregister
+
+???
+
+Registration for 
+<!--
+Follow this QR code for a google forms survey to determine interest for what kind of workshop to teach. 
+This survey will also act as a pre-registration form to determine priority access to seats.
+-->
+
+---
+
+class: inverse, center, middle
+
+# Data Therapy
+## March 5th, 1300-1500 E1035
+
+???
+
+We are having a data therapy session next week.
+Come to work on your bioinformatics and data science projects with experts available to answer your questions and help you work.
+I'll be there and will be available to help with R scripting as well.
+
+<!--
+We are having our second data therapy session this afternoon between 1430 and 1600 in E1035.
+Come to work on your bioinformatics and data science projects with experts available to answer your questions and help you work.
+I'll be there and will be available to help with R scripting as well.
+-->

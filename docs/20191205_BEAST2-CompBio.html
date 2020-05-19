@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>BEAST2</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Adrian Zetner" />
+    
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# BEAST2
+## <strong>B</strong>ayesian <strong>E</strong>volutionary <strong>A</strong>nalysis by <strong>S</strong>ampling <strong>T</strong>rees
+### Adrian Zetner
+### 2019/10/29 (updated: 2019-12-05)
+
+---
+
+
+
+
+
+class: inverse, center, middle
+
+# BEAST2?
+
+???
+What is BEAST2? Well, BEAST2 begs the question of what is BEAST?
+
+---
+
+# BEAST
+
+--
+
+1. any nonhuman animal, especially a large, four-footed mammal
+--
+
+2. a contemptible person
+--
+
+3. the Antichrist in Revelations
+--
+
+4. something formidably difficult to control or deal with
+
+???
+
+So beast, the noun can be defined as:
+
+1. any nonhuman animal, especially a large, four-footed mammal
+2. a contemptible person
+3. the Antichrist in Revelations
+4. something formidably difficult to control or deal with
+
+Probably none of those are why you're here though
+**click**
+
+---
+
+# BEAST
+
+1. any nonhuman animal, especially a large, four-footed mammal
+2. a contemptible person
+3. the Antichrist in Revelations
+4. something formidably difficult to control or deal with
+5. a cross-platform program for Bayesian analysis of molecular sequences using MCMC.
+
+???
+
+A cross-platform program for Bayesian analysis of molecular sequences using Markov Chain Monte Carlo.
+
+---
+
+# BEAST
+
+### A cross-platform program for Bayesian analysis of molecular sequences using MCMC.
+
+???
+
+5. A cross-platform program for Bayesian analysis of molecular sequences using Markov Chain Monte Carlo.
+---
+
+# BEAST2
+
+--
+
+A *modular*, *extensible*, cross-platform package for performing Bayesian inference using MCMC with emphasis on phylogenetic analysis of molecular sequences
+
+--
+
+... something formidably difficult to control or deal with
+
+
+???
+
+Bayesian Evolutionary Analysis by Sampling Trees 2:  
+An independent project led by the University of Auckland that is a rewrite of the original BEAST. **click** 
+"A modular, extensible, cross-platform package for performing Bayesian inference using Markov Chain Monte Carlo with emphasis on phylogenetic analysis of molecular sequences"
+It estimates rooted, time-measured phylogenies using strict or relaxed molecular clock models and can be used as a method of reconstructing phylogenies but is also a framework for testing evolutionary hypotheses without conditioning on a single tree topology. 
+
+---
+# BEAST2
+
+What is it used for?  
+--
+
+* Estimate phylogenies from alignments  
+--
+
+* Estimate dates of MRCA  
+--
+
+* Estimate gene and species trees  
+--
+
+* Infer population histories  
+--
+
+* Epidemic reconstruction  
+--
+
+* Phylogeography  
+--
+
+* Simulation studies  
+--
+
+* and more!
+
+---
+class: center, middle, inverse
+
+# Bayesian Inference in Brief
+
+???
+
+Let me preface this with, I am not an expert in the use of BEAST or the statistics that underpin it. I've taken a course and done some tutorials and have a general idea of using it. That being said: let's talk about inference. 
+
+---
+layout: false
+
+# Inference
+
+*Premise:* If A is true, then B is true.  
+
+--
+
+*Premise:* A is true.  
+
+???
+
+Inference is the act of deriving logical conclusions from premises known or assumed to be true
+
+---
+layout: false
+
+# Inference
+
+*Premise:* If A is true, then B is true.  
+
+*Premise:* A is true.  
+***
+*Inference:* B is true.
+
+---
+# Inference
+
+
+*Premise:* All humans are mortal.  
+
+--
+
+*Premise:* Adrian is a human.  
+
+---
+# Inference
+
+
+*Premise:* All humans are mortal.  
+
+*Premise:* Adrian is a human.  
+***
+*Inference:* Adrian is mortal.
+
+---
+# Statistical inference
+
+
+*Premise:* Squamish is a popular destination for rock climbers.  
+
+--
+
+*Premise:* Adrian is visiting Squamish.  
+
+???
+Statistical inference generalises this to situations where the
+premises are not su?ffcient to draw conclusions without
+uncertainty.
+
+---
+# Statistical inference
+
+
+*Premise:* Squamish is a popular destination for rock climbers.  
+
+*Premise:* Adrian is visiting Squamish.  
+***
+*Statistical Inference:* Adrian is a rock climber
+--
+?
+
+???
+Question mark? Uncertainty remains.
+
+To perform statistical inference we need a theory of plausible
+reasoning.
+
+---
+# Cox's Theorem 
+
+1. Divisibility and comparability
+
+???
+Cox suggested any theorem of plausible reasoning should satisfy the following conditions:
+
+1. Divisibility and comparability
+The plausibility of a proposition is a real number and is dependent on information we have related to the proposition.
+Logical propositions can only have values true or false
+
+---
+# Cox's Theorem
+
+1. Divisibility and comparability
+2. Common sense
+
+???
+
+2. Common sense - All valid reasoning routes give the same result  
+"Common sense" includes consistency with Aristotelian logic in the sense that logically equivalent propositions shall have the same plausibility.
+
+---
+# Cox's Theorem
+
+1. Divisibility and comparability
+2. Common sense
+3. Consistency
+
+???
+
+3. Consistency - If the plausibility of a proposition can be derived in many ways, all the results must be equal. Equivalent states of knowledge must have equivalent degrees of plausibility
+
+Cox's theorem has come to be used as one of the justifications for the use of Bayesian probability theory. Bayes' rule arises directly from the rules of probability. 
+
+---
+class: inverse, center, middle
+
+# Bayes' Rule
+
+???
+Let's just skip the series of logical multiplication and summation from which we derive Bayes' Rule and discuss what it represents:
+
+---
+class: center, middle
+
+`$$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$`
+
+???
+
+Bayes' rule or theorem provides us with a way to update our beliefs based on the arrival of new, relevant pieces of evidence. For example, if we were trying to provide the probability that a given person has cancer, we would initially just say it is whatever percent of the population has cancer. However, given additional evidence such as the fact that the person is a smoker, we can update our probability, since the probability of having cancer is higher given that the person is a smoker. This allows us to utilize prior knowledge to improve our probability estimations.
+
+In this formula, A is the event we want the probability of, and B is the new evidence that is related to A in some way.
+
+---
+class: center, middle
+
+`$$\textbf{P(A|B)} = \frac{P(B|A)P(A)}{P(B)}$$`
+
+???
+
+P(A|B) is called the posterior; this is what we are trying to estimate. In the above example, this would be the “probability of having cancer given that the person is a smoker”.
+
+---
+class: center, middle
+
+`$$P(A|B) = \frac{\textbf{P(B|A)}P(A)}{P(B)}$$`
+
+???
+
+P(B|A) is called the likelihood; this is the probability of observing the new evidence, given our initial hypothesis. In the above example, this would be the “probability of being a smoker given that the person has cancer”.
+
+---
+class: center, middle
+`$$P(A|B) = \frac{P(B|A)\textbf{P(A)}}{P(B)}$$`
+
+???
+
+P(A) is called the prior; this is the probability of our hypothesis without any additional prior information. In the above example, this would be the “probability of having cancer”.
+
+---
+class: center, middle
+`$$P(A|B) = \frac{P(B|A)P(A)}{\textbf{P(B)}}$$`
+
+???
+
+P(B) is called the marginal likelihood; this is the total probability of observing the evidence. In the above example, this would be the “probability of being a smoker”. 
+
+---
+class: inverse, center, middle
+background-image: url("https://media.giphy.com/media/3oGRFlpAW4sIHA02NW/giphy.gif")
+
+???
+
+This brings us to a point where we must more exactly define probabilities for our purposes. 
+
+Frequentists interpret probability as relative frequencies of outcomes of repeated, random (weakly controlled) "experiments"
+
+Take for example rolling a fair, 6-sided die:  
+• N: Total number of rolls.  
+• n5: Total number of 5’s rolled.  
+• P(d = 5) ≡ n5 /N as N → ∞
+
+---
+
+# Frequentist Probability
+
+
+Rolling a fair, 6-sided die:
+
+* N: Total number of rolls.  
+* n5: Total number of 5’s rolled.  
+* P(d = 5) ≡ n5 /N as N → ∞
+
+
+
+
+???
+
+Take for example rolling a fair, 6-sided die:  
+• N: Total number of rolls.  
+• n5: Total number of 5’s rolled.  
+• P(d = 5) ≡ n5 /N as N → ∞
+
+---
+
+# Frequentist Probability
+
+
+Rolling a fair, 6-sided die:
+
+* N: Total number of rolls.  
+* n5: Total number of 5’s rolled.  
+* P(d = 5) ≡ n5 /N as N → ∞
+
+* 1/6, right?
+
+
+
+???
+
+There are several problems here:
+1. Experiments are assumed to be repeatable.
+2. Assumes that randomness is a property of the system.
+3. Completely ignores ∼ 400 years of physics.
+
+
+
+---
+# Bayesian Probability
+
+* Treats probability as a measure of the plausibility
+--
+
+* Conditional on available information
+
+???
+
+The Bayesian interpretation treats probability as a measure of the plausibility
+of propositions conditional on available information.
+
+A single proposition can therefore have multiple probabilities depending on
+the available information!
+
+Back to our dice example...
+
+---
+class: inverse, center, middle
+
+_It is impossible for a Die, with such determin'd force and direction, not to fall on such determin'd
+side, only I don't know the force and direction which makes it fall on such determin'd side, and
+therefore I call it Chance, which is nothing but the want of art…_ John Arbuthnot, 1692
+
+???
+
+It is impossible for a Die, with such determin'd force and direction, not to fall on such determin'd
+side, only I don't know the force and direction which makes it fall on such determin'd side, and
+therefore I call it Chance, which is nothing but the want of art… John Arbuthnot, 1692
+
+A measure of the plausibility of propositions conditional on available information.
+
+---
+class: inverse, center, middle
+
+`$$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$`
+
+???
+
+In the Bayesian interpretation, probability measures a “degree of belief.” 
+
+Bayes’ theorem then links the degree of belief in a discrete proposition (T/F) or a continuous proposition (probability density) before and after accounting for evidence. 
+
+---
+class: inverse, center, middle
+
+`$$P(model | data) = \frac{P(data | model)P(model)}{P(data)}$$`
+
+???
+Putting this in terms of how BEAST2 uses bayes' theorem
+---
+class: inverse, center, middle
+`$$P(model | data) = \frac{P(data | model)P(model)}{\textbf{P(data)}}$$`
+
+???
+
+Model evidence → P(data)
+• Probability for data given model (any combination of parameters)
+• Used for Bayesian model selection
+
+---
+class: inverse, center, middle
+
+`$$P(model | data) = \frac{P(data | model)\textbf{P(model)}}{P(data)}$$`
+
+???
+
+Prior → P(model)  
+• Original probability for the model parameters/components  
+• Belief in our hypothesis  
+• All parameters have priors, whether you specify them or not!  
+
+For questions:
+A probability!
+• The probability of whatever you're interested in but in
+the absence of possibly relevant data.
+• In principle, any two (rational) people with access to the
+same information should specify exactly the same prior.
+• In practice this often isn't true.
+
+Isn't the need for priors a problem with the Bayesian
+approach?  
+• NO!
+• It is not possible to do inference without making
+assumptions.
+• Priors allow previous knowledge to be incorporated.
+• Frequentist (and Likelihoodist) methods also use priors:
+it's just not clear what they are!
+
+Which prior is best?
+• Only the person doing the analysis can answer this!  
+• Priors encapsulate expert knowledge (or its absence).  
+This is your opportunity to contribute your hard-won 
+expertise to the analysis
+
+---
+class: inverse, center, middle
+
+`$$P(model | data) = \frac{\textbf{P(data | model)}P(model)}{P(data)}$$`
+
+???
+Likelihood → P(data | model)
+• Probability of data given parameters (defined by model)
+
+---
+class: inverse, center, middle
+
+`$$\textbf{P(model | data)} = \frac{P(data | model)P(model)}{P(data)}$$`
+???
+
+Posterior → P(model | data)  
+* Updated probability for the model parameters in light of the data  
+* Continuous variable and therefore a probability density function
+
+---
+# Data
+
+* Samples drawn from stochastic process  
+--
+
+* Assumed to be correct
+--
+
+* Alignments of sequencing data  
+--
+
+* Sampled at one or many time points  
+
+???
+
+Samples drawn from a realisation of some stochastic process
+Assume that the data are correct
+Typically one or more alignments of genetic sequencing data (DNA, RNA, amino acids, codons)
+Sampled at one or many time points
+May contain sampling location or phenotypic trait data
+
+---
+# Model
+
+* Combines 4 separate models: 
+--
+
+  * Genealogy
+--
+
+  * Demographic 
+--
+
+  * Site
+--
+
+  * Molecular 
+
+---
+layout: true
+class: center, middle
+---
+
+# Genealogy Model
+
+
+---
+
+## Sampled Rooted Time-Tree 
+
+???
+
+The first model is genealogy and it describes the ancestral relationships between sampled taxa. Two parts of the name are important:
+
+
+
+---
+background-image: url(files/beast/fulltree.png)
+background-size: contain
+
+???
+SAMPLED
+
+A sampled tree: reconstructed from samples drawn from study area. Have only sampled some of the available data not the entire tree.  
+Full tree including unsampled tips shown here as X's. Sampled tree is missing those and is smaller for it.  
+
+---
+background-image: url(files/beast/sampledtree.png)
+background-size: contain
+
+???
+
+Sampled tree is missing those and is smaller for it.  
+
+---
+background-image: url(files/beast/timetrees.png)
+background-size: contain
+
+???
+
+Begins at the root, lengths are measured in calendar time and each tip is fixed at a certain sampling time.  
+Homochronous: All from one time point eg. outbreak, fossils, etc  
+Heterochronous: Different time points
+
+---
+
+# Demographic Model
+
+???
+
+Describes population / speciation dynamics.  
+How does the population demographics / species diversity
+change over time?  
+Uses either a backwards looking structured coalescent model or a forwards looking birth-death model  
+
+Questions  
+Coalescent:  
+Given n sampling times and an estimate for estimated population over time Ne(t), out of all the ways we can connect the samples, what is the probability of the current tree?
+
+Birth-death:
+Given an estimate for the origin time, birth, death and sampling rates, if we simulate a tree forward-in-time from the origin to the time of the most recent sample, out of all the trees with n samples,
+what is the probability of the current tree?
+---
+
+# Site Model
+
+???
+
+Combines the Site and Substitution models 
+Substitution models describe rates of substitution between available characters relative to genetic distance (expected substitutions/site), as well as equilibrium frequencies of characters
+Site models describe how the substitution model varies from site-to-site
+
+---
+# Clock Model
+
+???
+
+Determines how quickly sequences are evolving along the tree which can vary between branches  
+Fixed using known sampling times  
+
+---
+class: center, middle
+
+`$${P(G, D, S, C | sequences)} = \frac{P(sequences | G, D, S, C)P(G, D, S, C)}{P(sequences)}$$`
+
+
+???
+
+So what this gives us, if we could fill out the RHS fully is the posterior distribution of probabilities for each variation of those models (genealogy, demographic, site, clock) leading to the resultant sequence alignment.    
+
+
+---
+class: center, middle
+
+`\(P(sequences)\)`
+
+???
+
+Trouble is, we can't easily calculate the marginal likelihood or model evidence of a given set of sequences: for the complicated models that describe sequence evolution the parameter space is enormous 
+
+---
+class: inverse, center, middle
+
+# The Solution: Markov-Chain Monte Carlo  
+
+???
+
+MCMC is a stochastic algorithm that performs a random walk on the posterior, preferentially sampling high-density areas
+
+---
+background-image: url(files/beast/mcmcbot.png)
+background-size: contain
+
+???
+What that means:  
+Choose a position on the posterior (ie. random variation of model parameters)
+Randomly walk across this multi-dimensional probability landscape in a step-wise fashion: a markov chain
+Preferentially move towards higher probability combinations of model parameters: ie. ones more likely to explain the sequence alignment given the models
+
+---
+background-image: url(files/beast/probabilitylandscape.jpg)
+background-size: contain
+
+???
+
+Report parameter values of every Nth step.
+After many many repetitions, points will be sampled in proportion to the height of the probability landscape.
+
+---
+
+# Many
+
+---
+
+# Many, Many 
+
+---
+
+# Many, Many, Repetitions
+
+???
+Decide on the length of the chain (total number of steps to take): Millions of steps
+Decide on the sampling frequency (how often to record samples so that they are uncorrelated): Every 5-10k or so
+---
+background-image: url(files/beast/sticky.png)
+background-size: contain
+
+???
+After run discard first 10% or so, the so called "burn in"  
+Assess convergence and mixing: did it converge to a stable maximum? Was there jumping between?
+
+---
+background-image: url(files/beast/caterpillar.png)
+background-size: contain
+
+???
+A successful run should look like white noise.
+
+---
+background-image: url(files/beast/figtree.png)
+background-size: contain
+
+???
+Afterwards use the TreeAnnotator companion software from BEAST2 in order to take the reesults of that MCMC walk across the probabilistic landscape and convert them into a tree file which can be visualized in figtree or whatever software you prefer
+
+---
+layout: false
+# Tools of the trade
+
+* BEAUti2: Part of BEAST2 package for setting up the input file (.xml)
+--
+
+* BEAST2: Software implementing MCMC for model parameter and tree inference
+--
+
+* Tracer: Analysis of BEAST output files (.log)
+--
+
+* TreeAnnotator: Analysis of BEAST output files (.trees)
+--
+
+* FigTree, IcyTree, ggtree: Visualisation of trees (.trees)
+
+---
+background-image: url("https://taming-the-beast.org/tutorials/Introduction-to-BEAST2/figures/data.png")
+background-size: 600px
+background-position: 50% 50%
+
+# BEAUti2
+
+???
+
+So beauti is GUI software that allows the user to combine all parts of the model and then output an XML file for BEAST2
+First we load the the data (typically a sequence alignment) in Nexus format and assign priors and models. 
+Known tip dates for heterochronous trees are assigned in tip dates.
+The models are site, and clock. 
+
+---
+class: inverse, center, middle
+
+## Use jmodeltest2 to pick substitution model
+### https://github.com/ddarriba/jmodeltest2 
+
+---
+background-image: url("https://taming-the-beast.org/tutorials/Introduction-to-BEAST2/figures/priors.png")
+background-size: 600px
+background-position: 50% 50%
+
+# BEAUti2
+
+
+???
+
+The Priors tab allows prior distributions to be specified for each model parameter. 
+The model selections made in the Site Model and Clock Model tabs determine which parameters are included in the model. 
+For each of these parameters a prior distribution needs to be specified as default values will often lead you astray. They are meant to convey your prior knowledge of the parameters. 
+Priors are a multi-day workshop unto themselves so we'll move on.  
+
+---
+background-image: url("https://taming-the-beast.org/tutorials/Introduction-to-BEAST2/figures/logs.png")
+background-size: 400px
+background-position: 50% 50%
+
+# BEAUti2
+
+???
+
+Finally, the MCMC tab allows to control the length of the MCMC chain and the frequency of stored samples. 
+Chain length depends on the complexity of the analysis and storing is generally done every few thousand to tens of thousands of samples over a tens of millions long chain. 
+Finally we can output the xml file for BEAST2 to run.
+
+---
+class: inverse
+background-image: url(files/beast/xml.png)
+background-size: 700px
+background-position: 50% 50%
+
+
+
+???
+The XML file that BEAUTI produces looks something like this. It contains:
+
+The data (typically a sequence alignment)
+The model specification
+Initial values and parameter constraints
+Settings of the MCMC algorithm
+Output options
+
+---
+background-image: url("https://taming-the-beast.org/tutorials/Introduction-to-BEAST2/figures/beast.png")
+background-size: 400px
+background-position: 50% 50%
+
+# BEAST2
+
+
+???
+
+Runs the MCMC algorithm includes a number of options for setting a random seed for reproducible analyses and choosing graphics or computer processors.
+This is for running locally.
+
+---
+class: inverse
+background-image: url(files/beast/clbeast.png)
+background-size: 700px
+background-position: 50% 50%
+
+
+???
+
+We also have BEAST installed in a conda environment on Waffles to take advantage of our HPC infrastructure.
+
+---
+class: inverse, center, middle
+
+
+SRUN Command  
+```srun -p NMLResearch -c 4 --mem=4G beast -threads 4 Primates_long.xml```  
+
+SBATCH Command  
+```sbatch -p NMLResearch -c 4 --mem=4G --wrap="beast -threads 4 Primates_long.xml"```
+
+???
+
+BEAST only needs your XML file and a few parameters from SLURM
+
+---
+background-image: url("https://taming-the-beast.org/tutorials/Introduction-to-BEAST2/figures/beast_out.png")
+background-size: 600px
+background-position: 50% 50%
+
+???
+
+BEAST2 will run until the specified number of steps in the chain is reached. 
+While it is running, it will print the screenlog values to a console and store the tracelog and tree log values to files located in the same folder as the configuration XML file.
+
+---
+background-image: url("https://taming-the-beast.org/tutorials/Introduction-to-BEAST2/figures/tracer_bad.png")
+background-size: 400px
+background-position: 50% 50%
+
+# Tracer
+
+???
+
+Once your MCMC chain is finished (in hours to weeks) use Tracer to get an overview of BEAST2 output.
+
+Tracer provides a few useful summary statistics on the results of the analysis.
+
+---
+background-image: url("https://taming-the-beast.org/tutorials/Introduction-to-BEAST2/figures/treeannot.png")
+background-size: 600px
+background-position: 50% 50%
+
+# TreeAnnotator
+
+???
+
+Besides producing a sample of parameter estimates, BEAST2 also produces a posterior sample of phylogenetic time-trees.
+These can be summarised using treeannotator on the .trees file produced. 
+
+---
+background-image: url("https://taming-the-beast.org/tutorials/Introduction-to-BEAST2/figures/figtree.png")
+background-size: 600px
+background-position: 50% 50%
+
+# Figtree
+
+???
+
+The tree produced by TreeAnnotator can be examined with software such as Figtree with a number of statistics displayed on it: for example, here we see scale bars at nodes 
+representing the 95% Highests Posterior Density (HPD) which can be considered a Bayesian analogue to a confidence interval.
+
+
+---
+background-image: url("https://taming-the-beast.org/tutorials/Introduction-to-BEAST2/figures/densitree.png")
+background-size: 500px
+background-position: 50% 50%
+
+# Densitree
+
+???
+
+Instead of annotating the summary tree with extra information on some nodes to represent the uncertainty in the tree estimates we can visualize the entire set of posterior trees with Densitree.
+
+---
+class: inverse, center, middle
+
+# BEAST2
+
+???
+So that's a crash course summary of BEAST2 a *modular*, *extensible*, cross-platform package for performing Bayesian inference using MCMC with emphasis on phylogenetic analysis of molecular sequences...
+
+which in keeping with the original definitions is also: 
+
+---
+class: inverse, center, middle
+
+# BEAST2 ...
+### something formidably difficult to control or deal with
+
+---
+class: inverse, center, bottom
+background-image: url(files/beast/tutorialsQR.png)
+background-size: 400px
+background-position: 50% 50%
+
+
+## https://taming-the-beast.org/tutorials/
+
+???
+
+I highly reccommend working through the tutorials available here before diving in.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"click": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
